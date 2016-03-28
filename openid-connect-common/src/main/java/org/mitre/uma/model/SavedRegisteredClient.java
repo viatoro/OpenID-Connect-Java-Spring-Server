@@ -34,7 +34,7 @@ import org.mitre.uma.model.convert.RegisteredClientStringConverter;
  *
  */
 @Entity
-@Table(name = "saved_registered_client")
+@Table(name="OID_M_SAVED_REGISTERED_CLIENT")
 public class SavedRegisteredClient {
 
 	private Long id;
@@ -46,7 +46,7 @@ public class SavedRegisteredClient {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -63,7 +63,7 @@ public class SavedRegisteredClient {
 	 * @return the issuer
 	 */
 	@Basic
-	@Column(name = "issuer")
+	@Column(name = "ISSUER")
 	public String getIssuer() {
 		return issuer;
 	}
@@ -79,7 +79,7 @@ public class SavedRegisteredClient {
 	 * @return the registeredClient
 	 */
 	@Basic
-	@Column(name = "registered_client")
+	@Column(name = "REGISTERED_CLIENT")
 	@Convert(converter = RegisteredClientStringConverter.class)
 	public RegisteredClient getRegisteredClient() {
 		return registeredClient;

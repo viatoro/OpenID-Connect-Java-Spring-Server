@@ -38,7 +38,7 @@ import javax.persistence.Temporal;
  *
  */
 @Entity
-@Table(name = "authorization_code")
+@Table(name="OID_M_AUTHORIZATION_CODE")
 @NamedQueries({
 	@NamedQuery(name = AuthorizationCodeEntity.QUERY_BY_VALUE, query = "select a from AuthorizationCodeEntity a where a.code = :code"),
 	@NamedQuery(name = AuthorizationCodeEntity.QUERY_EXPIRATION_BY_DATE, query = "select a from AuthorizationCodeEntity a where a.expiration <= :" + AuthorizationCodeEntity.PARAM_DATE)
@@ -82,7 +82,7 @@ public class AuthorizationCodeEntity {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -98,7 +98,7 @@ public class AuthorizationCodeEntity {
 	 * @return the code
 	 */
 	@Basic
-	@Column(name = "code")
+	@Column(name = "CODE")
 	public String getCode() {
 		return code;
 	}
@@ -115,7 +115,7 @@ public class AuthorizationCodeEntity {
 	 * @return the authentication
 	 */
 	@ManyToOne
-	@JoinColumn(name = "auth_holder_id")
+	@JoinColumn(name = "AUTH_HOLDER_ID")
 	public AuthenticationHolderEntity getAuthenticationHolder() {
 		return authenticationHolder;
 	}
@@ -129,7 +129,7 @@ public class AuthorizationCodeEntity {
 
 	@Basic
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	@Column(name = "expiration")
+	@Column(name = "EXPIRATION")
 	public Date getExpiration() {
 		return expiration;
 	}

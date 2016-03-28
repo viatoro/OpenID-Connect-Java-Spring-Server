@@ -47,7 +47,7 @@ import com.nimbusds.jwt.JWT;
  *
  */
 @Entity
-@Table(name = "refresh_token")
+@Table(name="OID_M_refresh_token")
 @NamedQueries({
 	@NamedQuery(name = OAuth2RefreshTokenEntity.QUERY_ALL, query = "select r from OAuth2RefreshTokenEntity r"),
 	@NamedQuery(name = OAuth2RefreshTokenEntity.QUERY_EXPIRED_BY_DATE, query = "select r from OAuth2RefreshTokenEntity r where r.expiration <= :" + OAuth2RefreshTokenEntity.PARAM_DATE),
@@ -89,7 +89,7 @@ public class OAuth2RefreshTokenEntity implements OAuth2RefreshToken {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -108,7 +108,7 @@ public class OAuth2RefreshTokenEntity implements OAuth2RefreshToken {
 	 * @return the authentication
 	 */
 	@ManyToOne
-	@JoinColumn(name = "auth_holder_id")
+	@JoinColumn(name = "AUTH_HOLDER_ID")
 	public AuthenticationHolderEntity getAuthenticationHolder() {
 		return authenticationHolder;
 	}
@@ -157,7 +157,7 @@ public class OAuth2RefreshTokenEntity implements OAuth2RefreshToken {
 	 * @return the client
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "client_id")
+	@JoinColumn(name = "CLIENT_ID")
 	public ClientDetailsEntity getClient() {
 		return client;
 	}
@@ -174,7 +174,7 @@ public class OAuth2RefreshTokenEntity implements OAuth2RefreshToken {
 	 * @return the jwt
 	 */
 	@Basic
-	@Column(name="token_value")
+	@Column(name="TOKEN_VALUE")
 	@Convert(converter = JWTStringConverter.class)
 	public JWT getJwt() {
 		return jwt;

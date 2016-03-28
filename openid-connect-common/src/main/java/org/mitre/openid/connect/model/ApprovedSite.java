@@ -42,7 +42,7 @@ import org.mitre.oauth2.model.OAuth2AccessTokenEntity;
 import com.google.common.collect.Sets;
 
 @Entity
-@Table(name="approved_site")
+@Table(name="OID_M_APPROVED_SITE")
 @NamedQueries({
 	@NamedQuery(name = ApprovedSite.QUERY_ALL, query = "select a from ApprovedSite a"),
 	@NamedQuery(name = ApprovedSite.QUERY_BY_USER_ID, query = "select a from ApprovedSite a where a.userId = :" + ApprovedSite.PARAM_USER_ID),
@@ -96,7 +96,7 @@ public class ApprovedSite {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -112,7 +112,7 @@ public class ApprovedSite {
 	 * @return the userInfo
 	 */
 	@Basic
-	@Column(name="user_id")
+	@Column(name="USER_ID")
 	public String getUserId() {
 		return userId;
 	}
@@ -128,7 +128,7 @@ public class ApprovedSite {
 	 * @return the clientId
 	 */
 	@Basic
-	@Column(name="client_id")
+	@Column(name="CLIENT_ID")
 	public String getClientId() {
 		return clientId;
 	}
@@ -145,7 +145,7 @@ public class ApprovedSite {
 	 */
 	@Basic
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	@Column(name="creation_date")
+	@Column(name="CREATION_DATE")
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -162,7 +162,7 @@ public class ApprovedSite {
 	 */
 	@Basic
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	@Column(name="access_date")
+	@Column(name="ACCESS_DATE")
 	public Date getAccessDate() {
 		return accessDate;
 	}
@@ -179,10 +179,10 @@ public class ApprovedSite {
 	 */
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(
-			name="approved_site_scope",
-			joinColumns=@JoinColumn(name="owner_id")
+			name="OID_M_APPROVED_SITE_SCOPE",
+			joinColumns=@JoinColumn(name="OWNER_ID")
 			)
-	@Column(name="scope")
+	@Column(name="SCOPE")
 	public Set<String> getAllowedScopes() {
 		return allowedScopes;
 	}
@@ -230,7 +230,7 @@ public class ApprovedSite {
 	}
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="approved_site_id")
+	@JoinColumn(name="APPROVED_SITE_ID")
 	public Set<OAuth2AccessTokenEntity> getApprovedAccessTokens() {
 		return approvedAccessTokens;
 	}

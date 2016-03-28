@@ -41,7 +41,7 @@ import com.google.gson.JsonElement;
  *
  */
 @Entity
-@Table(name = "claim")
+@Table(name="OID_M_CLAIM")
 public class Claim {
 
 	private Long id;
@@ -71,7 +71,7 @@ public class Claim {
 	 * @return the name
 	 */
 	@Basic
-	@Column(name = "name")
+	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -86,7 +86,7 @@ public class Claim {
 	 * @return the friendlyName
 	 */
 	@Basic
-	@Column(name = "friendly_name")
+	@Column(name = "FRIENDLY_NAME")
 	public String getFriendlyName() {
 		return friendlyName;
 	}
@@ -101,7 +101,7 @@ public class Claim {
 	 * @return the claimType
 	 */
 	@Basic
-	@Column(name = "claim_type")
+	@Column(name = "CLAIM_TYPE")
 	public String getClaimType() {
 		return claimType;
 	}
@@ -116,10 +116,10 @@ public class Claim {
 	 * @return the claimTokenFormat
 	 */
 	@ElementCollection(fetch = FetchType.EAGER)
-	@Column(name = "claim_token_format")
+	@Column(name = "CLAIM_TOKEN_FORMAT")
 	@CollectionTable(
-		name = "claim_token_format",
-		joinColumns = @JoinColumn(name = "owner_id")
+		name = "OID_M_CLAIM_TOKEN_FORMAT",
+		joinColumns = @JoinColumn(name = "OWNER_ID")
 	)
 	public Set<String> getClaimTokenFormat() {
 		return claimTokenFormat;
@@ -135,10 +135,10 @@ public class Claim {
 	 * @return the issuer
 	 */
 	@ElementCollection(fetch = FetchType.EAGER)
-	@Column(name = "issuer")
+	@Column(name = "ISSUER")
 	@CollectionTable(
-		name = "claim_issuer",
-		joinColumns = @JoinColumn(name = "owner_id")
+		name = "OID_M_CLAIM_ISSUER",
+		joinColumns = @JoinColumn(name = "OWNER_ID")
 	)
 	public Set<String> getIssuer() {
 		return issuer;
@@ -154,7 +154,7 @@ public class Claim {
 	 * @return the value
 	 */
 	@Basic
-	@Column(name = "claim_value")
+	@Column(name = "CLAIM_VALUE")
 	@Convert(converter = JsonElementStringConverter.class)
 	public JsonElement getValue() {
 		return value;

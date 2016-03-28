@@ -39,7 +39,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Entity
-@Table(name="user_info")
+@Table(name="OID_M_USER_INFO")
 @NamedQueries({
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_USERNAME, query = "select u from DefaultUserInfo u WHERE u.preferredUsername = :" + DefaultUserInfo.PARAM_USERNAME),
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_EMAIL, query = "select u from DefaultUserInfo u WHERE u.email = :" + DefaultUserInfo.PARAM_EMAIL)
@@ -83,7 +83,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -98,7 +98,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="sub")
+	@Column(name="SUB")
 	public String getSub() {
 		return sub;
 	}
@@ -114,7 +114,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="preferred_username")
+	@Column(name="PREFERRED_USERNAME")
 	public String getPreferredUsername() {
 		return this.preferredUsername;
 	}
@@ -130,7 +130,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "name")
+	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -146,7 +146,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="given_name")
+	@Column(name="GIVEN_NAME")
 	public String getGivenName() {
 		return givenName;
 	}
@@ -162,7 +162,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="family_name")
+	@Column(name="FAMILY_NAME")
 	public String getFamilyName() {
 		return familyName;
 	}
@@ -178,7 +178,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="middle_name")
+	@Column(name="MIDDLE_NAME")
 	public String getMiddleName() {
 		return middleName;
 	}
@@ -194,7 +194,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "nickname")
+	@Column(name = "NICKNAME")
 	public String getNickname() {
 		return nickname;
 	}
@@ -210,7 +210,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "profile")
+	@Column(name = "PROFILE")
 	public String getProfile() {
 		return profile;
 	}
@@ -226,7 +226,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "picture")
+	@Column(name = "PICTURE")
 	public String getPicture() {
 		return picture;
 	}
@@ -242,7 +242,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "website")
+	@Column(name = "WEBSITE")
 	public String getWebsite() {
 		return website;
 	}
@@ -258,7 +258,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "email")
+	@Column(name = "EMAIL")
 	public String getEmail() {
 		return email;
 	}
@@ -274,7 +274,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="email_verified")
+	@Column(name="EMAIL_VERIFIED")
 	public Boolean getEmailVerified() {
 		return emailVerified;
 	}
@@ -290,7 +290,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "gender")
+	@Column(name = "GENDER")
 	public String getGender() {
 		return gender;
 	}
@@ -306,7 +306,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="zone_info")
+	@Column(name="ZONE_INFO")
 	public String getZoneinfo() {
 		return zoneinfo;
 	}
@@ -322,7 +322,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name = "locale")
+	@Column(name = "LOCALE")
 	public String getLocale() {
 		return locale;
 	}
@@ -338,7 +338,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="phone_number")
+	@Column(name="PHONE_NUMBER")
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -354,7 +354,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="phone_number_verified")
+	@Column(name="PHONE_NUMBER_VERIFIED")
 	public Boolean getPhoneNumberVerified() {
 		return phoneNumberVerified;
 	}
@@ -370,7 +370,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@OneToOne(targetEntity = DefaultAddress.class)
-	@JoinColumn(name="address_id")
+	@JoinColumn(name="ADDRESS_ID")
 	public Address getAddress() {
 		return address;
 	}
@@ -390,7 +390,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="updated_time")
+	@Column(name="UPDATED_TIME")
 	public String getUpdatedTime() {
 		return updatedTime;
 	}
@@ -407,7 +407,7 @@ public class DefaultUserInfo implements UserInfo {
 	 */
 	@Override
 	@Basic
-	@Column(name="birthdate")
+	@Column(name="BIRTHDATE")
 	public String getBirthdate() {
 		return birthdate;
 	}

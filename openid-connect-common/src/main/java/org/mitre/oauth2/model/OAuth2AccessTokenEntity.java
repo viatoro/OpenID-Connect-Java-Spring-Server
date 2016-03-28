@@ -62,7 +62,7 @@ import com.nimbusds.jwt.JWT;
  *
  */
 @Entity
-@Table(name = "access_token")
+@Table(name="OID_M_access_token")
 @NamedQueries({
 	@NamedQuery(name = OAuth2AccessTokenEntity.QUERY_ALL, query = "select a from OAuth2AccessTokenEntity a"),
 	@NamedQuery(name = OAuth2AccessTokenEntity.QUERY_EXPIRED_BY_DATE, query = "select a from OAuth2AccessTokenEntity a where a.expiration <= :" + OAuth2AccessTokenEntity.PARAM_DATE),
@@ -127,7 +127,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -157,7 +157,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	 * @return the authentication
 	 */
 	@ManyToOne
-	@JoinColumn(name = "auth_holder_id")
+	@JoinColumn(name = "AUTH_HOLDER_ID")
 	public AuthenticationHolderEntity getAuthenticationHolder() {
 		return authenticationHolder;
 	}
@@ -173,7 +173,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	 * @return the client
 	 */
 	@ManyToOne
-	@JoinColumn(name = "client_id")
+	@JoinColumn(name = "CLIENT_ID")
 	public ClientDetailsEntity getClient() {
 		return client;
 	}
@@ -197,7 +197,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	@Override
 	@Basic
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	@Column(name = "expiration")
+	@Column(name = "EXPIRATION")
 	public Date getExpiration() {
 		return expiration;
 	}
@@ -208,7 +208,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 
 	@Override
 	@Basic
-	@Column(name="token_type")
+	@Column(name="TOKEN_TYPE")
 	public String getTokenType() {
 		return tokenType;
 	}
@@ -219,7 +219,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 
 	@Override
 	@ManyToOne
-	@JoinColumn(name="refresh_token_id")
+	@JoinColumn(name="REFRESH_TOKEN_ID")
 	public OAuth2RefreshTokenEntity getRefreshToken() {
 		return refreshToken;
 	}
@@ -239,8 +239,8 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	@Override
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(
-			joinColumns=@JoinColumn(name="owner_id"),
-			name="token_scope"
+			joinColumns=@JoinColumn(name="OWNER_ID"),
+			name="TOKEN_SCOPE"
 			)
 	public Set<String> getScope() {
 		return scope;
@@ -260,7 +260,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	 * @return the idToken
 	 */
 	@OneToOne(cascade=CascadeType.ALL) // one-to-one mapping for now
-	@JoinColumn(name = "id_token_id")
+	@JoinColumn(name = "ID_TOKEN_ID")
 	public OAuth2AccessTokenEntity getIdToken() {
 		return idToken;
 	}
@@ -288,7 +288,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	 * @return the jwtValue
 	 */
 	@Basic
-	@Column(name="token_value")
+	@Column(name="TOKEN_VALUE")
 	@Convert(converter = JWTStringConverter.class)
 	public JWT getJwt() {
 		return jwtValue;
@@ -322,9 +322,9 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	 */
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
-			name = "access_token_permissions",
-			joinColumns = @JoinColumn(name = "access_token_id"),
-			inverseJoinColumns = @JoinColumn(name = "permission_id")
+			name = "OID_M_ACCESS_TOKEN_PERMISSIONS",
+			joinColumns = @JoinColumn(name = "ACCESS_TOKEN_ID"),
+			inverseJoinColumns = @JoinColumn(name = "PERMISSION_ID")
 	)
 	public Set<Permission> getPermissions() {
 		return permissions;

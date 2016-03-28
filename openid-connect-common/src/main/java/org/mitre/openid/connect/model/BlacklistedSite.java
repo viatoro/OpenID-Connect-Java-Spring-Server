@@ -34,7 +34,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="blacklisted_site")
+@Table(name="OID_M_BLACKLISTED_SITE")
 @NamedQueries({
 	@NamedQuery(name = BlacklistedSite.QUERY_ALL, query = "select b from BlacklistedSite b")
 })
@@ -57,7 +57,7 @@ public class BlacklistedSite {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -70,7 +70,7 @@ public class BlacklistedSite {
 	}
 
 	@Basic
-	@Column(name="uri")
+	@Column(name="URI")
 	public String getUri() {
 		return uri;
 	}

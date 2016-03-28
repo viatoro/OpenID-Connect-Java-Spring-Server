@@ -37,7 +37,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "resource_set")
+@Table(name="OID_M_RESOURCE_SET")
 @NamedQueries ({
 	@NamedQuery(name = ResourceSet.QUERY_BY_OWNER, query = "select r from ResourceSet r where r.owner = :" + ResourceSet.PARAM_OWNER),
 	@NamedQuery(name = ResourceSet.QUERY_BY_OWNER_AND_CLIENT, query = "select r from ResourceSet r where r.owner = :" + ResourceSet.PARAM_OWNER + " and r.clientId = :" + ResourceSet.PARAM_CLIENTID),
@@ -71,7 +71,7 @@ public class ResourceSet {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -87,7 +87,7 @@ public class ResourceSet {
 	 * @return the name
 	 */
 	@Basic
-	@Column(name = "name")
+	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -103,7 +103,7 @@ public class ResourceSet {
 	 * @return the uri
 	 */
 	@Basic
-	@Column(name = "uri")
+	@Column(name = "URI")
 	public String getUri() {
 		return uri;
 	}
@@ -119,7 +119,7 @@ public class ResourceSet {
 	 * @return the type
 	 */
 	@Basic
-	@Column(name = "rs_type")
+	@Column(name = "RS_TYPE")
 	public String getType() {
 		return type;
 	}
@@ -135,10 +135,10 @@ public class ResourceSet {
 	 * @return the scopes
 	 */
 	@ElementCollection(fetch = FetchType.EAGER)
-	@Column(name = "scope")
+	@Column(name = "SCOPE")
 	@CollectionTable(
-		name = "resource_set_scope",
-		joinColumns = @JoinColumn(name = "owner_id")
+		name = "OID_M_RESOURCE_SET_SCOPE",
+		joinColumns = @JoinColumn(name = "OWNER_ID")
 	)
 	public Set<String> getScopes() {
 		return scopes;
@@ -155,7 +155,7 @@ public class ResourceSet {
 	 * @return the iconUri
 	 */
 	@Basic
-	@Column(name = "icon_uri")
+	@Column(name = "ICON_URI")
 	public String getIconUri() {
 		return iconUri;
 	}
@@ -171,7 +171,7 @@ public class ResourceSet {
 	 * @return the owner
 	 */
 	@Basic
-	@Column(name = "owner")
+	@Column(name = "OWNER")
 	public String getOwner() {
 		return owner;
 	}
@@ -187,7 +187,7 @@ public class ResourceSet {
 	 * @return the clientId
 	 */
 	@Basic
-	@Column(name = "client_id")
+	@Column(name = "CLIENT_ID")
 	public String getClientId() {
 		return clientId;
 	}

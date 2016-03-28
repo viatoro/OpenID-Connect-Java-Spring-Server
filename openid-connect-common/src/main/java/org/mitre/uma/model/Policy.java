@@ -42,7 +42,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "policy")
+@Table(name="OID_M_POLICY")
 public class Policy {
 
 	private Long id;
@@ -55,7 +55,7 @@ public class Policy {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -71,7 +71,7 @@ public class Policy {
 	 * @return the name
 	 */
 	@Basic
-	@Column(name = "name")
+	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -88,9 +88,9 @@ public class Policy {
 	 */
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
-			name = "claim_to_policy",
-			joinColumns = @JoinColumn(name = "policy_id"),
-			inverseJoinColumns = @JoinColumn(name = "claim_id")
+			name = "OID_M_CLAIM_TO_POLICY",
+			joinColumns = @JoinColumn(name = "POLICY_ID"),
+			inverseJoinColumns = @JoinColumn(name = "CLAIM_ID")
 			)
 	public Collection<Claim> getClaimsRequired() {
 		return claimsRequired;
@@ -107,10 +107,10 @@ public class Policy {
 	 * @return the scopes
 	 */
 	@ElementCollection(fetch = FetchType.EAGER)
-	@Column(name = "scope")
+	@Column(name = "OID_M_SCOPE")
 	@CollectionTable(
-		name = "policy_scope",
-		joinColumns = @JoinColumn(name = "owner_id")
+		name = "POLICY_SCOPE",
+		joinColumns = @JoinColumn(name = "OWNER_ID")
 	)
 	public Set<String> getScopes() {
 		return scopes;

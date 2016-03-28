@@ -37,7 +37,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "pairwise_identifier")
+@Table(name="OID_M_PAIRWISE_IDENTIFIER")
 @NamedQueries({
 	@NamedQuery(name=PairwiseIdentifier.QUERY_ALL, query = "select p from PairwiseIdentifier p"),
 	@NamedQuery(name=PairwiseIdentifier.QUERY_BY_SECTOR_IDENTIFIER, query = "select p from PairwiseIdentifier p WHERE p.userSub = :" + PairwiseIdentifier.PARAM_SUB + " AND p.sectorIdentifier = :" + PairwiseIdentifier.PARAM_SECTOR_IDENTIFIER)
@@ -60,7 +60,7 @@ public class PairwiseIdentifier {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -76,7 +76,7 @@ public class PairwiseIdentifier {
 	 * @return the identifier
 	 */
 	@Basic
-	@Column(name = "identifier")
+	@Column(name = "IDENTIFIER")
 	public String getIdentifier() {
 		return identifier;
 	}
@@ -92,7 +92,7 @@ public class PairwiseIdentifier {
 	 * @return the userSub
 	 */
 	@Basic
-	@Column(name = PairwiseIdentifier.PARAM_SUB)
+	@Column(name = "SUB")
 	public String getUserSub() {
 		return userSub;
 	}
@@ -108,7 +108,7 @@ public class PairwiseIdentifier {
 	 * @return the sectorIdentifier
 	 */
 	@Basic
-	@Column(name = "sector_identifier")
+	@Column(name = "SECTOR_IDENTIFIER")
 	public String getSectorIdentifier() {
 		return sectorIdentifier;
 	}

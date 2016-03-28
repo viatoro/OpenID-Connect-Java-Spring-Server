@@ -39,7 +39,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="whitelisted_site")
+@Table(name="OID_M_WHITELISTED_SITE")
 @NamedQueries({
 	@NamedQuery(name = WhitelistedSite.QUERY_ALL, query = "select w from WhitelistedSite w"),
 	@NamedQuery(name = WhitelistedSite.QUERY_BY_CLIENT_ID, query = "select w from WhitelistedSite w where w.clientId = :" + WhitelistedSite.PARAM_CLIENT_ID),
@@ -79,7 +79,7 @@ public class WhitelistedSite {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -95,7 +95,7 @@ public class WhitelistedSite {
 	 * @return the clientId
 	 */
 	@Basic
-	@Column(name="client_id")
+	@Column(name="CLIENT_ID")
 	public String getClientId() {
 		return clientId;
 	}
@@ -112,10 +112,10 @@ public class WhitelistedSite {
 	 */
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(
-			name="whitelisted_site_scope",
-			joinColumns=@JoinColumn(name="owner_id")
+			name="OID_M_WHITELISTED_SITE_SCOPE",
+			joinColumns=@JoinColumn(name="OWNER_ID")
 			)
-	@Column(name="scope")
+	@Column(name="SCOPE")
 	public Set<String> getAllowedScopes() {
 		return allowedScopes;
 	}
@@ -128,7 +128,7 @@ public class WhitelistedSite {
 	}
 
 	@Basic
-	@Column(name="creator_user_id")
+	@Column(name="CREATOR_USER_ID")
 	public String getCreatorUserId() {
 		return creatorUserId;
 	}

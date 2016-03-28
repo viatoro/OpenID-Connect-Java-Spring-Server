@@ -45,7 +45,7 @@ import org.springframework.security.core.GrantedAuthority;
  *
  */
 @Entity
-@Table(name="saved_user_auth")
+@Table(name="OID_M_SAVED_USER_AUTH")
 public class SavedUserAuthentication implements Authentication {
 
 	private static final long serialVersionUID = -1804249963940323488L;
@@ -88,7 +88,7 @@ public class SavedUserAuthentication implements Authentication {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -102,7 +102,7 @@ public class SavedUserAuthentication implements Authentication {
 
 	@Override
 	@Basic
-	@Column(name="name")
+	@Column(name="NAME")
 	public String getName() {
 		return name;
 	}
@@ -110,7 +110,7 @@ public class SavedUserAuthentication implements Authentication {
 	@Override
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(
-			name="saved_user_auth_authority",
+			name="SAVED_USER_AUTH_AUTHORITY",
 			joinColumns=@JoinColumn(name="owner_id")
 			)
 	@Convert(converter = SimpleGrantedAuthorityStringConverter.class)
@@ -139,7 +139,7 @@ public class SavedUserAuthentication implements Authentication {
 
 	@Override
 	@Basic
-	@Column(name="authenticated")
+	@Column(name="AUTHENTICATED")
 	public boolean isAuthenticated() {
 		return authenticated;
 	}
@@ -153,7 +153,7 @@ public class SavedUserAuthentication implements Authentication {
 	 * @return the sourceClass
 	 */
 	@Basic
-	@Column(name="source_class")
+	@Column(name="SOURCE_CLASS")
 	public String getSourceClass() {
 		return sourceClass;
 	}

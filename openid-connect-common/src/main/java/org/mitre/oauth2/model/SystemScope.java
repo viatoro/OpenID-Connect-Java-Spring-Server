@@ -35,7 +35,7 @@ import javax.persistence.Transient;
  *
  */
 @Entity
-@Table(name = "system_scope")
+@Table(name="OID_M_SYSTEM_SCOPE")
 @NamedQueries({
 	@NamedQuery(name = SystemScope.QUERY_ALL, query = "select s from SystemScope s ORDER BY s.id"),
 	@NamedQuery(name = SystemScope.QUERY_BY_VALUE, query = "select s from SystemScope s WHERE s.value = :" + SystemScope.PARAM_VALUE)
@@ -77,7 +77,7 @@ public class SystemScope {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -91,7 +91,7 @@ public class SystemScope {
 	 * @return the value
 	 */
 	@Basic
-	@Column(name = "scope")
+	@Column(name = "SCOPE")
 	public String getValue() {
 		return value;
 	}
@@ -105,7 +105,7 @@ public class SystemScope {
 	 * @return the description
 	 */
 	@Basic
-	@Column(name = "description")
+	@Column(name = "DESCRIPTION")
 	public String getDescription() {
 		return description;
 	}
@@ -119,7 +119,7 @@ public class SystemScope {
 	 * @return the icon
 	 */
 	@Basic
-	@Column(name = "icon")
+	@Column(name = "ICON")
 	public String getIcon() {
 		return icon;
 	}
@@ -134,7 +134,7 @@ public class SystemScope {
 	 * @return the defaultScope
 	 */
 	@Basic
-	@Column(name = "default_scope")
+	@Column(name = "DEFAULT_SCOPE")
 	public boolean isDefaultScope() {
 		return defaultScope;
 	}
@@ -150,7 +150,7 @@ public class SystemScope {
 	 * @return the restricted
 	 */
 	@Basic
-	@Column(name = "restricted")
+	@Column(name = "RESTRICTED")
 	public boolean isRestricted() {
 		return restricted;
 	}
@@ -166,7 +166,7 @@ public class SystemScope {
 	 * @return the isStructured status
 	 */
 	@Basic
-	@Column(name = "structured")
+	@Column(name = "STRUCTURED")
 	public boolean isStructured() {
 		return structured;
 	}
@@ -179,7 +179,7 @@ public class SystemScope {
 	}
 
 	@Basic
-	@Column(name = "structured_param_description")
+	@Column(name = "STRUCTURED_PARAM_DESCRIPTION")
 	public String getStructuredParamDescription() {
 		return structuredParamDescription;
 	}

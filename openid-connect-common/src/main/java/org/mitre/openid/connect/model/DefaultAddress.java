@@ -27,7 +27,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="address")
+@Table(name="OID_M_address")
 public class DefaultAddress implements Address {
 
 	private static final long serialVersionUID = -1304880008685206811L;
@@ -64,7 +64,7 @@ public class DefaultAddress implements Address {
 	 * @return the formatted address string
 	 */
 	@Basic
-	@Column(name = "formatted")
+	@Column(name = "FORMATTED")
 	public String getFormatted() {
 		return formatted;
 	}
@@ -78,7 +78,7 @@ public class DefaultAddress implements Address {
 	 * @return the streetAddress
 	 */
 	@Basic
-	@Column(name="street_address")
+	@Column(name="STREET_ADDRESS")
 	public String getStreetAddress() {
 		return streetAddress;
 	}
@@ -92,7 +92,7 @@ public class DefaultAddress implements Address {
 	 * @return the locality
 	 */
 	@Basic
-	@Column(name = "locality")
+	@Column(name = "LOCALITY")
 	public String getLocality() {
 		return locality;
 	}
@@ -106,7 +106,7 @@ public class DefaultAddress implements Address {
 	 * @return the region
 	 */
 	@Basic
-	@Column(name = "region")
+	@Column(name = "REGION")
 	public String getRegion() {
 		return region;
 	}
@@ -120,7 +120,7 @@ public class DefaultAddress implements Address {
 	 * @return the postalCode
 	 */
 	@Basic
-	@Column(name="postal_code")
+	@Column(name="POSTAL_CODE")
 	public String getPostalCode() {
 		return postalCode;
 	}
@@ -134,7 +134,7 @@ public class DefaultAddress implements Address {
 	 * @return the country
 	 */
 	@Basic
-	@Column(name = "country")
+	@Column(name = "COUNTRY")
 	public String getCountry() {
 		return country;
 	}
@@ -150,7 +150,7 @@ public class DefaultAddress implements Address {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}

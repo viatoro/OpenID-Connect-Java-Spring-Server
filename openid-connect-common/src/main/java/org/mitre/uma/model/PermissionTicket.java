@@ -46,7 +46,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@Table(name = "permission_ticket")
+@Table(name="OID_M_PERMISSION_TICKET")
 @NamedQueries({
 	@NamedQuery(name = PermissionTicket.QUERY_TICKET, query = "select p from PermissionTicket p where p.ticket = :" + PermissionTicket.PARAM_TICKET),
 	@NamedQuery(name = PermissionTicket.QUERY_ALL, query = "select p from PermissionTicket p"),
@@ -72,7 +72,7 @@ public class PermissionTicket {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
@@ -88,7 +88,7 @@ public class PermissionTicket {
 	 * @return the permission
 	 */
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "permission_id")
+	@JoinColumn(name = "PERMISSION_ID")
 	public Permission getPermission() {
 		return permission;
 	}
@@ -104,7 +104,7 @@ public class PermissionTicket {
 	 * @return the ticket
 	 */
 	@Basic
-	@Column(name = "ticket")
+	@Column(name = "TICKET")
 	public String getTicket() {
 		return ticket;
 	}
@@ -121,7 +121,7 @@ public class PermissionTicket {
 	 */
 	@Basic
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "expiration")
+	@Column(name = "EXPIRATION")
 	public Date getExpiration() {
 		return expiration;
 	}
@@ -138,9 +138,9 @@ public class PermissionTicket {
 	 */
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
-			name = "claim_to_permission_ticket",
-			joinColumns = @JoinColumn(name = "permission_ticket_id"),
-			inverseJoinColumns = @JoinColumn(name = "claim_id")
+			name = "OID_M_CLAIM_TO_PERMISSION_TICKET",
+			joinColumns = @JoinColumn(name = "PERMISSION_TICKET_ID"),
+			inverseJoinColumns = @JoinColumn(name = "CLAIM_ID")
 	)
 	public Collection<Claim> getClaimsSupplied() {
 		return claimsSupplied;
