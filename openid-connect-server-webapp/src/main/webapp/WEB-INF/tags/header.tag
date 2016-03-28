@@ -67,7 +67,7 @@
 		// NOTE: this is just for  
 		function isAdmin() {
 			var auth = getUserAuthorities();
-			if (auth && _.contains(auth, "ROLE_ADMIN")) {
+			if (auth && _.contains(auth, "COM999999")) {
 				return true;
 			} else {
 				return false;

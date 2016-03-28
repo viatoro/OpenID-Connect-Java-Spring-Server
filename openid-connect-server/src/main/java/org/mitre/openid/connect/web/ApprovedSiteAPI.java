@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/" + ApprovedSiteAPI.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class ApprovedSiteAPI {
 
 	public static final String URL = RootController.API_URL + "/approved";

@@ -23,7 +23,7 @@ import java.util.Set;
 import org.mitre.oauth2.model.OAuth2AccessTokenEntity;
 import org.mitre.oauth2.model.OAuth2RefreshTokenEntity;
 import org.mitre.oauth2.service.IntrospectionResultAssembler;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.uma.model.Permission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ public class DefaultIntrospectionResultAssembler implements IntrospectionResultA
 	private static final Logger logger = LoggerFactory.getLogger(DefaultIntrospectionResultAssembler.class);
 
 	@Override
-	public Map<String, Object> assembleFrom(OAuth2AccessTokenEntity accessToken, UserInfo userInfo, Set<String> authScopes) {
+	public Map<String, Object> assembleFrom(OAuth2AccessTokenEntity accessToken, IUserInfo userInfo, Set<String> authScopes) {
 
 		Map<String, Object> result = newLinkedHashMap();
 		OAuth2Authentication authentication = accessToken.getAuthenticationHolder().getAuthentication();
@@ -102,7 +102,7 @@ public class DefaultIntrospectionResultAssembler implements IntrospectionResultA
 	}
 
 	@Override
-	public Map<String, Object> assembleFrom(OAuth2RefreshTokenEntity refreshToken, UserInfo userInfo, Set<String> authScopes) {
+	public Map<String, Object> assembleFrom(OAuth2RefreshTokenEntity refreshToken, IUserInfo userInfo, Set<String> authScopes) {
 
 		Map<String, Object> result = newLinkedHashMap();
 		OAuth2Authentication authentication = refreshToken.getAuthenticationHolder().getAuthentication();

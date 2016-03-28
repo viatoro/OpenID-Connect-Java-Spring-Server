@@ -39,12 +39,12 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Entity
-@Table(name="OID_M_USER_INFO")
+@Table(name="SYS_M_USER")
 @NamedQueries({
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_USERNAME, query = "select u from DefaultUserInfo u WHERE u.preferredUsername = :" + DefaultUserInfo.PARAM_USERNAME),
 	@NamedQuery(name=DefaultUserInfo.QUERY_BY_EMAIL, query = "select u from DefaultUserInfo u WHERE u.email = :" + DefaultUserInfo.PARAM_EMAIL)
 })
-public class DefaultUserInfo implements UserInfo {
+public class DefaultUserInfo implements IUserInfo {
 
 	public static final String QUERY_BY_USERNAME = "DefaultUserInfo.getByUsername";
 	public static final String QUERY_BY_EMAIL = "DefaultUserInfo.getByEmailAddress";
@@ -371,14 +371,14 @@ public class DefaultUserInfo implements UserInfo {
 	@Override
 	@OneToOne(targetEntity = DefaultAddress.class)
 	@JoinColumn(name="ADDRESS_ID")
-	public Address getAddress() {
+	public IAddress getAddress() {
 		return address;
 	}
 	/* (non-Javadoc)
 	 * @see org.mitre.openid.connect.model.UserInfo#setAddress(org.mitre.openid.connect.model.Address)
 	 */
 	@Override
-	public void setAddress(Address address) {
+	public void setAddress(IAddress address) {
 		if (address != null) { 
 			this.address = new DefaultAddress(address);
 		} else {
@@ -473,7 +473,7 @@ public class DefaultUserInfo implements UserInfo {
 	 * @param o
 	 * @return
 	 */
-	public static UserInfo fromJson(JsonObject obj) {
+	public static IUserInfo fromJson(JsonObject obj) {
 		DefaultUserInfo ui = new DefaultUserInfo();
 		ui.setSource(obj);
 

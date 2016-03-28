@@ -51,13 +51,13 @@ public abstract class AuthenticationUtilities {
 	}
 
 	/**
-	 * Check to see if the given auth object has ROLE_ADMIN assigned to it or not
+	 * Check to see if the given auth object has COM999999 assigned to it or not
 	 * @param auth
 	 * @return
 	 */
 	public static boolean isAdmin(Authentication auth) {
 		for (GrantedAuthority grantedAuthority : auth.getAuthorities()) {
-			if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+			if (grantedAuthority.getAuthority().equals("COM999999")) {
 				return true;
 			}
 		}

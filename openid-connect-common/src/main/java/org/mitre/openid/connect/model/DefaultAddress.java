@@ -28,7 +28,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="OID_M_address")
-public class DefaultAddress implements Address {
+public class DefaultAddress implements IAddress {
 
 	private static final long serialVersionUID = -1304880008685206811L;
 
@@ -51,7 +51,7 @@ public class DefaultAddress implements Address {
 	 * Copy constructor from an existing address.
 	 * @param address
 	 */
-	public DefaultAddress(Address address) {
+	public DefaultAddress(IAddress address) {
 		setFormatted(address.getFormatted());
 		setStreetAddress(address.getStreetAddress());
 		setLocality(address.getLocality());

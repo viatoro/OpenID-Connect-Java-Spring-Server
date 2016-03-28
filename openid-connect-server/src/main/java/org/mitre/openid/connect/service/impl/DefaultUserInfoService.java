@@ -19,7 +19,7 @@ package org.mitre.openid.connect.service.impl;
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.model.ClientDetailsEntity.SubjectType;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.repository.UserInfoRepository;
 import org.mitre.openid.connect.service.PairwiseIdentiferService;
 import org.mitre.openid.connect.service.UserInfoService;
@@ -45,16 +45,16 @@ public class DefaultUserInfoService implements UserInfoService {
 	private PairwiseIdentiferService pairwiseIdentifierService;
 
 	@Override
-	public UserInfo getByUsername(String username) {
+	public IUserInfo getByUsername(String username) {
 		return userInfoRepository.getByUsername(username);
 	}
 
 	@Override
-	public UserInfo getByUsernameAndClientId(String username, String clientId) {
+	public IUserInfo getByUsernameAndClientId(String username, String clientId) {
 
 		ClientDetailsEntity client = clientService.loadClientByClientId(clientId);
 
-		UserInfo userInfo = getByUsername(username);
+		IUserInfo userInfo = getByUsername(username);
 
 		if (client == null || userInfo == null) {
 			return null;
@@ -70,7 +70,7 @@ public class DefaultUserInfoService implements UserInfoService {
 	}
 
 	@Override
-	public UserInfo getByEmailAddress(String email) {
+	public IUserInfo getByEmailAddress(String email) {
 		return userInfoRepository.getByEmailAddress(email);
 	}
 

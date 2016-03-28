@@ -53,7 +53,7 @@ public class StatsAPI {
 
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('COM000000')")
 	@RequestMapping(value = "byclientid", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String statsByClient(ModelMap m) {
 		Map<Long, Integer> e = statsService.getByClientId();
@@ -63,7 +63,7 @@ public class StatsAPI {
 		return JsonEntityView.VIEWNAME;
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('COM000000')")
 	@RequestMapping(value = "byclientid/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String statsByClientId(@PathVariable("id") Long id, ModelMap m) {
 		Integer e = statsService.getCountForClientId(id);

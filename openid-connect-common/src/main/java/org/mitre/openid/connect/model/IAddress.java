@@ -18,7 +18,7 @@ package org.mitre.openid.connect.model;
 
 import java.io.Serializable;
 
-public interface Address extends Serializable {
+public interface IAddress extends Serializable {
 
 	/**
 	 * Get the system-specific ID of the Address object

@@ -19,7 +19,7 @@ package org.mitre.openid.connect.client;
 
 import java.util.Collection;
 
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.nimbusds.jwt.JWT;
@@ -35,6 +35,6 @@ public interface OIDCAuthoritiesMapper {
 	 * @param userInfo userInfo of the current user (could be @null)
 	 * @return the set of authorities to map to this user
 	 */
-	Collection<? extends GrantedAuthority> mapAuthorities(JWT idToken, UserInfo userInfo);
+	Collection<? extends GrantedAuthority> mapAuthorities(JWT idToken, IUserInfo userInfo);
 
 }

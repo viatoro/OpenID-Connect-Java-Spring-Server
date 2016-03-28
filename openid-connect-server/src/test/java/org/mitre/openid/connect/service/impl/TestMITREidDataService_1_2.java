@@ -1381,7 +1381,7 @@ public class TestMITREidDataService_1_2 {
 		OAuth2Request req1 = new OAuth2Request(new HashMap<String, String>(), "client1", new ArrayList<GrantedAuthority>(),
 				true, new HashSet<String>(), new HashSet<String>(), "http://foo.com",
 				new HashSet<String>(), null);
-		Authentication mockAuth1 = new UsernamePasswordAuthenticationToken("user1", "pass1", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
+		Authentication mockAuth1 = new UsernamePasswordAuthenticationToken("user1", "pass1", AuthorityUtils.commaSeparatedStringToAuthorityList("COM000000"));
 		OAuth2Authentication auth1 = new OAuth2Authentication(req1, mockAuth1);
 
 		AuthenticationHolderEntity holder1 = new AuthenticationHolderEntity();

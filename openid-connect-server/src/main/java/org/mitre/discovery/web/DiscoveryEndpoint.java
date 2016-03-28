@@ -28,7 +28,7 @@ import org.mitre.oauth2.service.SystemScopeService;
 import org.mitre.oauth2.web.IntrospectionEndpoint;
 import org.mitre.oauth2.web.RevocationEndpoint;
 import org.mitre.openid.connect.config.ConfigurationPropertiesBean;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.UserInfoService;
 import org.mitre.openid.connect.view.HttpCodeView;
 import org.mitre.openid.connect.view.JsonEntityView;
@@ -118,7 +118,7 @@ public class DiscoveryEndpoint {
 				// acct: URI (email address format)
 
 				// check on email addresses first
-				UserInfo user = userService.getByEmailAddress(resourceUri.getUserInfo() + "@" + resourceUri.getHost());
+				IUserInfo user = userService.getByEmailAddress(resourceUri.getUserInfo() + "@" + resourceUri.getHost());
 
 				if (user == null) {
 					// user wasn't found, see if the local part of the username matches, plus our issuer host

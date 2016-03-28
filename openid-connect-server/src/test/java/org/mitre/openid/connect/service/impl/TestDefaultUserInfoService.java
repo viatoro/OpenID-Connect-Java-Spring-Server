@@ -26,7 +26,7 @@ import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.model.ClientDetailsEntity.SubjectType;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
 import org.mitre.openid.connect.model.DefaultUserInfo;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.repository.UserInfoRepository;
 import org.mitre.openid.connect.service.PairwiseIdentiferService;
 import org.mockito.InjectMocks;
@@ -58,8 +58,8 @@ public class TestDefaultUserInfoService {
 	@Mock
 	private PairwiseIdentiferService pairwiseIdentiferService;
 
-	private UserInfo userInfoAdmin;
-	private UserInfo userInfoRegular;
+	private IUserInfo userInfoAdmin;
+	private IUserInfo userInfoRegular;
 
 	private ClientDetailsEntity publicClient1;
 	private ClientDetailsEntity publicClient2;
@@ -143,24 +143,24 @@ public class TestDefaultUserInfoService {
 
 	/**
 	 * Test loading an admin user, ensuring that the UserDetails object returned
-	 * has both the ROLE_USER and ROLE_ADMIN authorities.
+	 * has both the COM000000 and COM999999 authorities.
 	 */
 	@Test
 	public void loadByUsername_admin_success() {
 		Mockito.when(userInfoRepository.getByUsername(adminUsername)).thenReturn(userInfoAdmin);
-		UserInfo user = service.getByUsername(adminUsername);
+		IUserInfo user = service.getByUsername(adminUsername);
 		assertEquals(user.getSub(), adminSub);
 	}
 
 	/**
 	 * Test loading a regular, non-admin user, ensuring that the returned UserDetails
-	 * object has ROLE_USER but *not* ROLE_ADMIN.
+	 * object has COM000000 but *not* COM999999.
 	 */
 	@Test
 	public void loadByUsername_regular_success() {
 
 		Mockito.when(userInfoRepository.getByUsername(regularUsername)).thenReturn(userInfoRegular);
-		UserInfo user = service.getByUsername(regularUsername);
+		IUserInfo user = service.getByUsername(regularUsername);
 		assertEquals(user.getSub(), regularSub);
 
 	}
@@ -172,7 +172,7 @@ public class TestDefaultUserInfoService {
 	public void loadByUsername_nullUser() {
 
 		Mockito.when(userInfoRepository.getByUsername(adminUsername)).thenReturn(null);
-		UserInfo user = service.getByUsername(adminUsername);
+		IUserInfo user = service.getByUsername(adminUsername);
 
 		assertNull(user);
 	}
@@ -188,10 +188,10 @@ public class TestDefaultUserInfoService {
 
 		Mockito.when(userInfoRepository.getByUsername(regularUsername)).thenReturn(userInfoRegular);
 
-		Mockito.verify(pairwiseIdentiferService, Mockito.never()).getIdentifier(Matchers.any(UserInfo.class), Matchers.any(ClientDetailsEntity.class));
+		Mockito.verify(pairwiseIdentiferService, Mockito.never()).getIdentifier(Matchers.any(IUserInfo.class), Matchers.any(ClientDetailsEntity.class));
 
-		UserInfo user1 = service.getByUsernameAndClientId(regularUsername, publicClientId1);
-		UserInfo user2 = service.getByUsernameAndClientId(regularUsername, publicClientId2);
+		IUserInfo user1 = service.getByUsernameAndClientId(regularUsername, publicClientId1);
+		IUserInfo user2 = service.getByUsernameAndClientId(regularUsername, publicClientId2);
 
 		assertEquals(regularSub, user1.getSub());
 		assertEquals(regularSub, user2.getSub());
@@ -208,10 +208,10 @@ public class TestDefaultUserInfoService {
 		Mockito.when(clientDetailsEntityService.loadClientByClientId(pairwiseClientId3)).thenReturn(pairwiseClient3);
 		Mockito.when(clientDetailsEntityService.loadClientByClientId(pairwiseClientId4)).thenReturn(pairwiseClient4);
 
-		Mockito.when(userInfoRepository.getByUsername(regularUsername)).thenAnswer(new Answer<UserInfo>() {
+		Mockito.when(userInfoRepository.getByUsername(regularUsername)).thenAnswer(new Answer<IUserInfo>() {
 			@Override
-			public UserInfo answer(InvocationOnMock invocation) throws Throwable {
-				UserInfo userInfo = new DefaultUserInfo();
+			public IUserInfo answer(InvocationOnMock invocation) throws Throwable {
+				IUserInfo userInfo = new DefaultUserInfo();
 				userInfo.setPreferredUsername(regularUsername);
 				userInfo.setSub(regularSub);
 
@@ -224,10 +224,10 @@ public class TestDefaultUserInfoService {
 		Mockito.when(pairwiseIdentiferService.getIdentifier(userInfoRegular, pairwiseClient3)).thenReturn(pairwiseSub3);
 		Mockito.when(pairwiseIdentiferService.getIdentifier(userInfoRegular, pairwiseClient4)).thenReturn(pairwiseSub4);
 
-		UserInfo user1 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId1);
-		UserInfo user2 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId2);
-		UserInfo user3 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId3);
-		UserInfo user4 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId4);
+		IUserInfo user1 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId1);
+		IUserInfo user2 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId2);
+		IUserInfo user3 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId3);
+		IUserInfo user4 = service.getByUsernameAndClientId(regularUsername, pairwiseClientId4);
 
 		assertEquals(pairwiseSub12, user1.getSub());
 		assertEquals(pairwiseSub12, user2.getSub());

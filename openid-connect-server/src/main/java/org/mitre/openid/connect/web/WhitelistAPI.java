@@ -51,7 +51,7 @@ import com.google.gson.JsonParser;
  */
 @Controller
 @RequestMapping("/" + WhitelistAPI.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class WhitelistAPI {
 
 	public static final String URL = RootController.API_URL + "/whitelist";
@@ -89,7 +89,7 @@ public class WhitelistAPI {
 	 * @param p
 	 * @return
 	 */
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String addNewWhitelistedSite(@RequestBody String jsonString, ModelMap m, Principal p) {
 
@@ -126,7 +126,7 @@ public class WhitelistAPI {
 	/**
 	 * Update an existing whitelisted site
 	 */
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String updateWhitelistedSite(@PathVariable("id") Long id, @RequestBody String jsonString, ModelMap m, Principal p) {
 
@@ -170,7 +170,7 @@ public class WhitelistAPI {
 	 * Delete a whitelisted site
 	 * 
 	 */
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
 	public String deleteWhitelistedSite(@PathVariable("id") Long id, ModelMap m) {
 		WhitelistedSite whitelist = whitelistService.getById(id);

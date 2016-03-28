@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.mitre.openid.connect.client.model.IssuerServiceResponse;
 import org.mitre.openid.connect.client.service.impl.WebfingerIssuerService;
 import org.mitre.openid.connect.config.ConfigurationPropertiesBean;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.UserInfoService;
 import org.mitre.openid.connect.view.HttpCodeView;
 import org.mitre.openid.connect.view.JsonEntityView;
@@ -51,7 +51,7 @@ import com.google.common.collect.ImmutableSet;
  */
 @Controller
 @RequestMapping("/" + UserClaimSearchHelper.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class UserClaimSearchHelper {
 
 	public static final String URL = RootController.API_URL + "/emailsearch";
@@ -69,7 +69,7 @@ public class UserClaimSearchHelper {
 	public String search(@RequestParam(value = "identifier") String email, Model m, Authentication auth, HttpServletRequest req) {
 
 		// check locally first
-		UserInfo localUser = userInfoService.getByEmailAddress(email);
+		IUserInfo localUser = userInfoService.getByEmailAddress(email);
 
 		if (localUser != null) {
 			Map<String, Object> e = new HashMap<>();

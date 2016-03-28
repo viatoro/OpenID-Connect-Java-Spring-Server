@@ -70,7 +70,7 @@ import com.nimbusds.jose.jwk.JWKSet;
 
 @Controller
 @RequestMapping("/" + ClientAPI.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class ClientAPI {
 
 	public static final String URL = RootController.API_URL + "/clients";
@@ -162,7 +162,7 @@ public class ClientAPI {
 	 * @param principal
 	 * @return
 	 */
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String apiAddClient(@RequestBody String jsonString, Model m, Authentication auth) {
 
@@ -255,7 +255,7 @@ public class ClientAPI {
 	 * @param principal
 	 * @return
 	 */
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String apiUpdateClient(@PathVariable("id") Long id, @RequestBody String jsonString, Model m, Authentication auth) {
 
@@ -354,7 +354,7 @@ public class ClientAPI {
 	 * @param modelAndView
 	 * @return
 	 */
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public String apiDeleteClient(@PathVariable("id") Long id, ModelAndView modelAndView) {
 

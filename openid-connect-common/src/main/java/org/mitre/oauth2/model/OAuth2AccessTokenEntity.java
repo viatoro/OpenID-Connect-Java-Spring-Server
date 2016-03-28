@@ -62,7 +62,7 @@ import com.nimbusds.jwt.JWT;
  *
  */
 @Entity
-@Table(name="OID_M_access_token")
+@Table(name="OID_M_ACCESS_TOKEN")
 @NamedQueries({
 	@NamedQuery(name = OAuth2AccessTokenEntity.QUERY_ALL, query = "select a from OAuth2AccessTokenEntity a"),
 	@NamedQuery(name = OAuth2AccessTokenEntity.QUERY_EXPIRED_BY_DATE, query = "select a from OAuth2AccessTokenEntity a where a.expiration <= :" + OAuth2AccessTokenEntity.PARAM_DATE),
@@ -240,7 +240,7 @@ public class OAuth2AccessTokenEntity implements OAuth2AccessToken {
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(
 			joinColumns=@JoinColumn(name="OWNER_ID"),
-			name="TOKEN_SCOPE"
+			name="OID_M_TOKEN_SCOPE"
 			)
 	public Set<String> getScope() {
 		return scope;

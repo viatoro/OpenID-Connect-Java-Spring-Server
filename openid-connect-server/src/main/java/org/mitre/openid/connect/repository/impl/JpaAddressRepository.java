@@ -19,7 +19,7 @@ package org.mitre.openid.connect.repository.impl;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.mitre.openid.connect.model.Address;
+import org.mitre.openid.connect.model.IAddress;
 import org.mitre.openid.connect.repository.AddressRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,8 +38,8 @@ public class JpaAddressRepository implements AddressRepository {
 
 	@Override
 	@Transactional(value="defaultTransactionManager")
-	public Address getById(Long id) {
-		return manager.find(Address.class, id);
+	public IAddress getById(Long id) {
+		return manager.find(IAddress.class, id);
 	}
 
 }

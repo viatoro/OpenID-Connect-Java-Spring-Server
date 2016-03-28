@@ -26,7 +26,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.ScopeClaimTranslationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,7 +94,7 @@ public class UserInfoView extends AbstractView {
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
 
-		UserInfo userInfo = (UserInfo) model.get(USER_INFO);
+		IUserInfo userInfo = (IUserInfo) model.get(USER_INFO);
 
 		Set<String> scope = (Set<String>) model.get(SCOPE);
 
@@ -138,7 +138,7 @@ public class UserInfoView extends AbstractView {
 	 * @param requestedClaims the claims requested in the RequestObject
 	 * @return the filtered JsonObject result
 	 */
-	private JsonObject toJsonFromRequestObj(UserInfo ui, Set<String> scope, JsonObject authorizedClaims, JsonObject requestedClaims) {
+	private JsonObject toJsonFromRequestObj(IUserInfo ui, Set<String> scope, JsonObject authorizedClaims, JsonObject requestedClaims) {
 
 		// get the base object
 		JsonObject obj = ui.toJson();

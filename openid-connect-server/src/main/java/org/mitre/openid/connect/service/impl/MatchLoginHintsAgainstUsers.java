@@ -17,7 +17,7 @@
 
 package org.mitre.openid.connect.service.impl;
 
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.LoginHintExtracter;
 import org.mitre.openid.connect.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ public class MatchLoginHintsAgainstUsers implements LoginHintExtracter {
 		if (Strings.isNullOrEmpty(loginHint)) {
 			return null;
 		} else {
-			UserInfo user = userInfoService.getByEmailAddress(loginHint);
+			IUserInfo user = userInfoService.getByEmailAddress(loginHint);
 			if (user == null) {
 				user = userInfoService.getByUsername(loginHint);
 				if (user == null) {

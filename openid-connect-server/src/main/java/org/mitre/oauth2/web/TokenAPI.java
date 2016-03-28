@@ -50,7 +50,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/" + TokenAPI.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class TokenAPI {
 
 	public static final String URL = RootController.API_URL + "/tokens";
@@ -120,7 +120,7 @@ public class TokenAPI {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value = "/client/{clientId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAccessTokensByClientId(@PathVariable("clientId") String clientId, ModelMap m, Principal p) {
 
@@ -139,7 +139,7 @@ public class TokenAPI {
 
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value = "/registration/{clientId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getRegistrationTokenByClientId(@PathVariable("clientId") String clientId, ModelMap m, Principal p) {
 
@@ -164,7 +164,7 @@ public class TokenAPI {
 
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value = "/registration/{clientId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String rotateRegistrationTokenByClientId(@PathVariable("clientId") String clientId, ModelMap m, Principal p) {
 		ClientDetailsEntity client = clientService.loadClientByClientId(clientId);

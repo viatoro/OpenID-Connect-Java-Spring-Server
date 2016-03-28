@@ -21,7 +21,7 @@ import java.io.Serializable;
 import com.google.gson.JsonObject;
 
 
-public interface UserInfo extends Serializable {
+public interface IUserInfo extends Serializable {
 
 	/**
 	 * @return the userId
@@ -197,12 +197,12 @@ public interface UserInfo extends Serializable {
 	/**
 	 * @return the address
 	 */
-	public Address getAddress();
+	public IAddress getAddress();
 
 	/**
 	 * @param address the address to set
 	 */
-	public void setAddress(Address address);
+	public void setAddress(IAddress address);
 
 	/**
 	 * @return the updatedTime

@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.mitre.openid.connect.model.OIDCAuthenticationToken;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -89,7 +89,7 @@ public class UserInfoInterceptor extends HandlerInterceptorAdapter {
 				if (auth != null && auth.getName() != null && userInfoService != null) {
 	
 					// try to look up a user based on the principal's name
-					UserInfo user = userInfoService.getByUsername(auth.getName());
+					IUserInfo user = userInfoService.getByUsername(auth.getName());
 	
 					// if we have one, inject it so views can use it
 					if (user != null) {

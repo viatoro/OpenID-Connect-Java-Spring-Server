@@ -28,7 +28,7 @@ import org.mitre.oauth2.service.ClientDetailsEntityService;
 import org.mitre.oauth2.service.IntrospectionResultAssembler;
 import org.mitre.oauth2.service.OAuth2TokenEntityService;
 import org.mitre.oauth2.service.SystemScopeService;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.UserInfoService;
 import org.mitre.openid.connect.view.HttpCodeView;
 import org.mitre.openid.connect.view.JsonEntityView;
@@ -153,7 +153,7 @@ public class IntrospectionEndpoint {
 		OAuth2AccessTokenEntity accessToken = null;
 		OAuth2RefreshTokenEntity refreshToken = null;
 		ClientDetailsEntity tokenClient;
-		UserInfo user;
+		IUserInfo user;
 
 		try {
 

@@ -21,8 +21,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.mitre.openid.connect.model.DefaultUserInfo;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.repository.UserInfoRepository;
+import org.mitre.openid.connect.sys.model.User;
 import org.springframework.stereotype.Repository;
 
 import static org.mitre.util.jpa.JpaUtil.getSingleResult;
@@ -43,9 +44,9 @@ public class JpaUserInfoRepository implements UserInfoRepository {
 	 * Get a single UserInfo object by its username
 	 */
 	@Override
-	public UserInfo getByUsername(String username) {
-		TypedQuery<DefaultUserInfo> query = manager.createNamedQuery(DefaultUserInfo.QUERY_BY_USERNAME, DefaultUserInfo.class);
-		query.setParameter(DefaultUserInfo.PARAM_USERNAME, username);
+	public IUserInfo getByUsername(String username) {
+		TypedQuery<User> query = manager.createNamedQuery(User.QUERY_BY_USERNAME, User.class);
+		query.setParameter(User.PARAM_USERNAME, username);
 
 		return getSingleResult(query.getResultList());
 
@@ -55,9 +56,9 @@ public class JpaUserInfoRepository implements UserInfoRepository {
 	 * Get a single UserInfo object by its email address
 	 */
 	@Override
-	public UserInfo getByEmailAddress(String email) {
-		TypedQuery<DefaultUserInfo> query = manager.createNamedQuery(DefaultUserInfo.QUERY_BY_EMAIL, DefaultUserInfo.class);
-		query.setParameter(DefaultUserInfo.PARAM_EMAIL, email);
+	public IUserInfo getByEmailAddress(String email) {
+		TypedQuery<User> query = manager.createNamedQuery(User.QUERY_BY_EMAIL, User.class);
+		query.setParameter(User.PARAM_EMAIL, email);
 
 		return getSingleResult(query.getResultList());
 	}

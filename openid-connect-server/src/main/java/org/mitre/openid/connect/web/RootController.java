@@ -60,7 +60,7 @@ public class RootController {
 		return "contact";
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('COM000000')")
 	@RequestMapping("manage/**")
 	public String showClientManager(ModelMap m) {
 		return "manage";

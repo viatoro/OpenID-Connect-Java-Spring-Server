@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.mitre.openid.connect.repository;
 
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 
 /**
  * UserInfo repository interface
@@ -31,7 +31,7 @@ public interface UserInfoRepository {
 	 * @param username
 	 * @return
 	 */
-	public UserInfo getByUsername(String username);
+	public IUserInfo getByUsername(String username);
 
 	/**
 	 * 
@@ -40,6 +40,6 @@ public interface UserInfoRepository {
 	 * @param email
 	 * @return
 	 */
-	public UserInfo getByEmailAddress(String email);
+	public IUserInfo getByEmailAddress(String email);
 
 }

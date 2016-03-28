@@ -45,7 +45,7 @@ public class OIDCAuthenticationToken extends AbstractAuthenticationToken {
 	private final String issuer; // issuer URL (parsed from the id token)
 	private final String sub; // user id (parsed from the id token)
 
-	private final UserInfo userInfo; // user info container
+	private final IUserInfo userInfo; // user info container
 
 	/**
 	 * Constructs OIDCAuthenticationToken with a full set of authorities, marking this as authenticated.
@@ -59,7 +59,7 @@ public class OIDCAuthenticationToken extends AbstractAuthenticationToken {
 	 * @param idToken
 	 */
 	public OIDCAuthenticationToken(String subject, String issuer,
-			UserInfo userInfo, Collection<? extends GrantedAuthority> authorities,
+			IUserInfo userInfo, Collection<? extends GrantedAuthority> authorities,
 			JWT idToken, String accessTokenValue, String refreshTokenValue) {
 
 		super(authorities);
@@ -129,7 +129,7 @@ public class OIDCAuthenticationToken extends AbstractAuthenticationToken {
 	/**
 	 * @return the userInfo
 	 */
-	public UserInfo getUserInfo() {
+	public IUserInfo getUserInfo() {
 		return userInfo;
 	}
 

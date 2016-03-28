@@ -24,7 +24,7 @@ import javax.swing.text.DateFormatter;
 
 import org.mitre.oauth2.model.OAuth2AccessTokenEntity;
 import org.mitre.oauth2.model.OAuth2RefreshTokenEntity;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 
 /**
  * Strategy interface for assembling a token introspection result.
@@ -50,7 +50,7 @@ public interface IntrospectionResultAssembler {
 	 * @param authScopes the scopes the client is authorized for
 	 * @return the token introspection result
 	 */
-	Map<String, Object> assembleFrom(OAuth2AccessTokenEntity accessToken, UserInfo userInfo, Set<String> authScopes);
+	Map<String, Object> assembleFrom(OAuth2AccessTokenEntity accessToken, IUserInfo userInfo, Set<String> authScopes);
 
 	/**
 	 * Assemble a token introspection result from the given refresh token and user info.
@@ -60,6 +60,6 @@ public interface IntrospectionResultAssembler {
 	 * @param authScopes the scopes the client is authorized for
 	 * @return the token introspection result
 	 */
-	Map<String, Object> assembleFrom(OAuth2RefreshTokenEntity refreshToken, UserInfo userInfo, Set<String> authScopes);
+	Map<String, Object> assembleFrom(OAuth2RefreshTokenEntity refreshToken, IUserInfo userInfo, Set<String> authScopes);
 
 }

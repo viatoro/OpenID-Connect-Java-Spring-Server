@@ -20,7 +20,7 @@
 package org.mitre.openid.connect.service;
 
 import org.mitre.oauth2.model.ClientDetailsEntity;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 
 /**
  * @author jricher
@@ -37,6 +37,6 @@ public interface PairwiseIdentiferService {
 	 * @param client
 	 * @return
 	 */
-	public String getIdentifier(UserInfo userInfo, ClientDetailsEntity client);
+	public String getIdentifier(IUserInfo userInfo, ClientDetailsEntity client);
 
 }

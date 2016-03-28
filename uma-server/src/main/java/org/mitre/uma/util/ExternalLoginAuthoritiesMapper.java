@@ -20,7 +20,7 @@ package org.mitre.uma.util;
 import java.util.Collection;
 
 import org.mitre.openid.connect.client.OIDCAuthoritiesMapper;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -39,7 +39,7 @@ public class ExternalLoginAuthoritiesMapper implements OIDCAuthoritiesMapper {
 	private static final GrantedAuthority ROLE_EXTERNAL_USER = new SimpleGrantedAuthority("ROLE_EXTERNAL_USER");
 
 	@Override
-	public Collection<? extends GrantedAuthority> mapAuthorities(JWT idToken, UserInfo userInfo) {
+	public Collection<? extends GrantedAuthority> mapAuthorities(JWT idToken, IUserInfo userInfo) {
 		return Sets.newHashSet(ROLE_EXTERNAL_USER);
 	}
 

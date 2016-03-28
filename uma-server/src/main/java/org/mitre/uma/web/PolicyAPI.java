@@ -54,7 +54,7 @@ import com.google.gson.Gson;
  */
 @Controller
 @RequestMapping("/" + PolicyAPI.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class PolicyAPI {
 
 	// Logger for this class

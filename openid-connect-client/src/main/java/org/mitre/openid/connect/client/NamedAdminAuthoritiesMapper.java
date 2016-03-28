@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,8 +35,8 @@ import com.nimbusds.jwt.JWTClaimsSet;
 
 /**
  * 
- * Simple mapper that adds ROLE_USER to the authorities map for all queries,
- * plus adds ROLE_ADMIN if the subject and issuer pair are found in the
+ * Simple mapper that adds COM000000 to the authorities map for all queries,
+ * plus adds COM999999 if the subject and issuer pair are found in the
  * configurable "admins" set.
  * 
  * @author jricher
@@ -46,13 +46,13 @@ public class NamedAdminAuthoritiesMapper implements OIDCAuthoritiesMapper {
 
 	private static Logger logger = LoggerFactory.getLogger(NamedAdminAuthoritiesMapper.class);
 
-	private static final SimpleGrantedAuthority ROLE_ADMIN = new SimpleGrantedAuthority("ROLE_ADMIN");
-	private static final SimpleGrantedAuthority ROLE_USER = new SimpleGrantedAuthority("ROLE_USER");
+	private static final SimpleGrantedAuthority COM999999 = new SimpleGrantedAuthority("COM999999");
+	private static final SimpleGrantedAuthority COM000000 = new SimpleGrantedAuthority("COM000000");
 
 	private Set<SubjectIssuerGrantedAuthority> admins = new HashSet<>();
 
 	@Override
-	public Collection<? extends GrantedAuthority> mapAuthorities(JWT idToken, UserInfo userInfo) {
+	public Collection<? extends GrantedAuthority> mapAuthorities(JWT idToken, IUserInfo userInfo) {
 
 		Set<GrantedAuthority> out = new HashSet<>();
 		try {
@@ -62,11 +62,11 @@ public class NamedAdminAuthoritiesMapper implements OIDCAuthoritiesMapper {
 			out.add(authority);
 
 			if (admins.contains(authority)) {
-				out.add(ROLE_ADMIN);
+				out.add(COM999999);
 			}
 
 			// everybody's a user by default
-			out.add(ROLE_USER);
+			out.add(COM000000);
 
 		} catch (ParseException e) {
 			logger.error("Unable to parse ID Token inside of authorities mapper (huh?)");

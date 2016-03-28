@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.mitre.openid.connect.repository;
 
-import org.mitre.openid.connect.model.Address;
+import org.mitre.openid.connect.model.IAddress;
 
 /**
  * Address repository interface
@@ -33,6 +33,6 @@ public interface AddressRepository {
 	 *            id the id of the Address
 	 * @return a valid Address if it exists, null otherwise
 	 */
-	public Address getById(Long id);
+	public IAddress getById(Long id);
 
 }

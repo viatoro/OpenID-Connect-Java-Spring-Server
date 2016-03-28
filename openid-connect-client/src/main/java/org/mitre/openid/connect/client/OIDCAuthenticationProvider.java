@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import org.mitre.openid.connect.model.OIDCAuthenticationToken;
 import org.mitre.openid.connect.model.PendingOIDCAuthenticationToken;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -65,7 +65,7 @@ public class OIDCAuthenticationProvider implements AuthenticationProvider {
 			JWT idToken = token.getIdToken();
 
 			// load the user info if we can
-			UserInfo userInfo = userInfoFetcher.loadUserInfo(token);
+			IUserInfo userInfo = userInfoFetcher.loadUserInfo(token);
 
 			if (userInfo == null) {
 				// user info not found -- could be an error, could be fine
@@ -92,7 +92,7 @@ public class OIDCAuthenticationProvider implements AuthenticationProvider {
 	 * @param userInfo
 	 * @return
 	 */
-	protected Authentication createAuthenticationToken(PendingOIDCAuthenticationToken token, Collection<? extends GrantedAuthority> authorities, UserInfo userInfo) {
+	protected Authentication createAuthenticationToken(PendingOIDCAuthenticationToken token, Collection<? extends GrantedAuthority> authorities, IUserInfo userInfo) {
 		return new OIDCAuthenticationToken(token.getSub(),
 				token.getIssuer(),
 				userInfo, authorities,

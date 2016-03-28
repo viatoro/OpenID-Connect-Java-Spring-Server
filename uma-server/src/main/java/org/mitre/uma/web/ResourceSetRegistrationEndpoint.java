@@ -60,7 +60,7 @@ import static org.mitre.util.JsonUtils.getAsStringSet;
 
 @Controller
 @RequestMapping("/" + ResourceSetRegistrationEndpoint.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class ResourceSetRegistrationEndpoint {
 
 	private static final Logger logger = LoggerFactory.getLogger(ResourceSetRegistrationEndpoint.class);

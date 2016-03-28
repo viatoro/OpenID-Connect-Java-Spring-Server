@@ -24,7 +24,7 @@ import java.util.UUID;
 
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.openid.connect.model.PairwiseIdentifier;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.repository.PairwiseIdentifierRepository;
 import org.mitre.openid.connect.service.PairwiseIdentiferService;
 import org.slf4j.Logger;
@@ -53,7 +53,7 @@ public class UUIDPairwiseIdentiferService implements PairwiseIdentiferService {
 	private PairwiseIdentifierRepository pairwiseIdentifierRepository;
 
 	@Override
-	public String getIdentifier(UserInfo userInfo, ClientDetailsEntity client) {
+	public String getIdentifier(IUserInfo userInfo, ClientDetailsEntity client) {
 
 		String sectorIdentifier = null;
 

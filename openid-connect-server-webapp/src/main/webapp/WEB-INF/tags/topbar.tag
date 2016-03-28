@@ -73,7 +73,7 @@
 	
 					</ul>
 	
-						<security:authorize access="hasRole('ROLE_USER')">
+						<security:authorize access="hasRole('COM000000')">
 		
 							<ul class="nav hidden-desktop">
 							<o:actionmenu />
@@ -83,7 +83,7 @@
 	
 					<!-- use a full user menu and button when not collapsed -->
 					<ul class="nav pull-right visible-desktop">
-	                    <security:authorize access="hasRole('ROLE_USER')">
+	                    <security:authorize access="hasRole('COM000000')">
 						<li class="dropdown">
 							<a id="userButton" class="dropdown-toggle" data-toggle="dropdown" href=""><i class="icon-user icon-white"></i> ${ shortName } <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
@@ -93,7 +93,7 @@
 							</ul>
 						</li>
 	                    </security:authorize>
-	                    <security:authorize access="!hasRole('ROLE_USER')">
+	                    <security:authorize access="!hasRole('COM000000')">
 	                    <li>
 	                    	<a id="loginButton" href="login" data-toggle="collapse" data-target=".nav-collapse"><i class="icon-lock icon-white"></i> <spring:message code="topbar.login"/></a>
 	                    </li>
@@ -102,12 +102,12 @@
 	                
 	                <!--  use a simplified user button system when collapsed -->
 	                <ul class="nav hidden-desktop">
-	                    <security:authorize access="hasRole('ROLE_USER')">
+	                    <security:authorize access="hasRole('COM000000')">
 						<li><a href="manage/#user/profile">${ longName }</a></li>
 						<li class="divider"></li>
 						<li><a href="" class="logoutLink"><i class="icon-remove"></i> <spring:message code="topbar.logout"/></a></li>
 	                    </security:authorize>
-	                    <security:authorize access="!hasRole('ROLE_USER')">
+	                    <security:authorize access="!hasRole('COM000000')">
 	                    <li>
 	                    	<a href="login" data-toggle="collapse" data-target=".nav-collapse"><i class="icon-lock"></i> <spring:message code="topbar.login"/></a>
 	                    </li>

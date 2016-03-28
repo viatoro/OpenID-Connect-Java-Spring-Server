@@ -28,7 +28,7 @@ import org.junit.Test;
 import org.mitre.oauth2.model.OAuth2AccessTokenEntity;
 import org.mitre.oauth2.model.OAuth2RefreshTokenEntity;
 import org.mitre.oauth2.service.IntrospectionResultAssembler;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.uma.model.Permission;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Request;
@@ -61,7 +61,7 @@ public class TestDefaultIntrospectionResultAssembler {
 		OAuth2AccessTokenEntity accessToken = accessToken(new Date(123 * 1000L), scopes("foo", "bar"), null, "Bearer",
 				authentication("name", request("clientId")));
 
-		UserInfo userInfo = userInfo("sub");
+		IUserInfo userInfo = userInfo("sub");
 
 		Set<String> authScopes = scopes("foo", "bar", "baz");
 
@@ -91,7 +91,7 @@ public class TestDefaultIntrospectionResultAssembler {
 				permissions(permission(1L, "foo", "bar")),
 				"Bearer", authentication("name", request("clientId")));
 
-		UserInfo userInfo = userInfo("sub");
+		IUserInfo userInfo = userInfo("sub");
 
 		Set<String> authScopes = scopes("foo", "bar", "baz");
 
@@ -156,7 +156,7 @@ public class TestDefaultIntrospectionResultAssembler {
 		OAuth2AccessTokenEntity accessToken = accessToken(null, scopes("foo", "bar"), null, "Bearer",
 				authentication("name", request("clientId")));
 
-		UserInfo userInfo = userInfo("sub");
+		IUserInfo userInfo = userInfo("sub");
 
 		Set<String> authScopes = scopes("foo", "bar", "baz");
 
@@ -183,7 +183,7 @@ public class TestDefaultIntrospectionResultAssembler {
 		OAuth2RefreshTokenEntity refreshToken = refreshToken(new Date(123 * 1000L),
 				authentication("name", request("clientId", scopes("foo",  "bar"))));
 
-		UserInfo userInfo = userInfo("sub");
+		IUserInfo userInfo = userInfo("sub");
 
 		Set<String> authScopes = scopes("foo", "bar", "baz");
 
@@ -237,7 +237,7 @@ public class TestDefaultIntrospectionResultAssembler {
 		OAuth2RefreshTokenEntity refreshToken = refreshToken(null,
 				authentication("name", request("clientId", scopes("foo",  "bar"))));
 
-		UserInfo userInfo = userInfo("sub");
+		IUserInfo userInfo = userInfo("sub");
 
 		Set<String> authScopes = scopes("foo", "bar", "baz");
 
@@ -256,8 +256,8 @@ public class TestDefaultIntrospectionResultAssembler {
 		assertThat(result, is(equalTo(expected)));
 	}
 
-	private UserInfo userInfo(String sub) {
-		UserInfo userInfo = mock(UserInfo.class);
+	private IUserInfo userInfo(String sub) {
+		IUserInfo userInfo = mock(IUserInfo.class);
 		given(userInfo.getSub()).willReturn(sub);
 		return userInfo;
 	}

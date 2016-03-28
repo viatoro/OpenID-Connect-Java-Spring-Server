@@ -55,7 +55,7 @@ import static org.mitre.util.JsonUtils.getAsStringSet;
  */
 @Controller
 @RequestMapping("/" + PermissionRegistrationEndpoint.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class PermissionRegistrationEndpoint {
 	// Logger for this class
 	private static final Logger logger = LoggerFactory.getLogger(PermissionRegistrationEndpoint.class);

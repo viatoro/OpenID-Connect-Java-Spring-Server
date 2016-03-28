@@ -21,7 +21,7 @@ import java.util.List;
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
 import org.mitre.oauth2.service.SystemScopeService;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.UserInfoService;
 import org.mitre.openid.connect.view.HttpCodeView;
 import org.mitre.openid.connect.view.UserInfoJWTView;
@@ -69,7 +69,7 @@ public class UserInfoEndpoint {
 	/**
 	 * Get information about the user as specified in the accessToken included in this request
 	 */
-	@PreAuthorize("hasRole('ROLE_USER') and #oauth2.hasScope('" + SystemScopeService.OPENID_SCOPE + "')")
+	@PreAuthorize("hasRole('COM000000') and #oauth2.hasScope('" + SystemScopeService.OPENID_SCOPE + "')")
 	@RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, produces = {MediaType.APPLICATION_JSON_VALUE, UserInfoJWTView.JOSE_MEDIA_TYPE_VALUE})
 	public String getInfo(@RequestParam(value="claims", required=false) String claimsRequestJsonString,
 			@RequestHeader(value=HttpHeaders.ACCEPT, required=false) String acceptHeader,
@@ -82,7 +82,7 @@ public class UserInfoEndpoint {
 		}
 
 		String username = auth.getName();
-		UserInfo userInfo = userInfoService.getByUsernameAndClientId(username, auth.getOAuth2Request().getClientId());
+		IUserInfo userInfo = userInfoService.getByUsernameAndClientId(username, auth.getOAuth2Request().getClientId());
 
 		if (userInfo == null) {
 			logger.error("getInfo failed; user not found: " + username);

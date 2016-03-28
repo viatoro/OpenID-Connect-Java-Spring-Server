@@ -16,9 +16,9 @@ INSERT INTO users_TEMP (username, password, enabled) VALUES
 
 
 INSERT INTO authorities_TEMP (username, authority) VALUES
-  ('admin','ROLE_ADMIN'),
-  ('admin','ROLE_USER'),
-  ('user','ROLE_USER');
+  ('admin','COM999999'),
+  ('admin','COM000000'),
+  ('user','COM000000');
     
 -- By default, the username column here has to match the username column in the users table, above
 INSERT INTO user_info_TEMP (sub, preferred_username, name, email, email_verified) VALUES

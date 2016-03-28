@@ -47,7 +47,7 @@ public class RevocationEndpoint {
 
 	public static final String URL = "revoke";
 
-	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
+	@PreAuthorize("hasRole('COM999999') or hasRole('ROLE_CLIENT')")
 	@RequestMapping("/" + URL)
 	public String revoke(@RequestParam("token") String tokenValue, @RequestParam(value = "token_type_hint", required = false) String tokenType, Principal principal, Model model) {
 

@@ -48,7 +48,7 @@ import com.google.gson.Gson;
  */
 @Controller
 @RequestMapping("/" + ScopeAPI.URL)
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('COM000000')")
 public class ScopeAPI {
 
 	public static final String URL = RootController.API_URL + "/scopes";
@@ -93,7 +93,7 @@ public class ScopeAPI {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String updateScope(@PathVariable("id") Long id, @RequestBody String json, ModelMap m) {
 
@@ -131,7 +131,7 @@ public class ScopeAPI {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String createScope(@RequestBody String json, ModelMap m) {
 		SystemScope scope = gson.fromJson(json, SystemScope.class);
@@ -162,7 +162,7 @@ public class ScopeAPI {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('COM999999')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public String deleteScope(@PathVariable("id") Long id, ModelMap m) {
 		SystemScope existing = scopeService.getById(id);

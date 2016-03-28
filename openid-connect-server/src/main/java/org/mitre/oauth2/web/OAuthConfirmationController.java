@@ -33,7 +33,7 @@ import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.model.SystemScope;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
 import org.mitre.oauth2.service.SystemScopeService;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.ScopeClaimTranslationService;
 import org.mitre.openid.connect.service.StatsService;
 import org.mitre.openid.connect.service.UserInfoService;
@@ -100,7 +100,7 @@ public class OAuthConfirmationController {
 		this.clientService = clientService;
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('COM000000')")
 	@RequestMapping("/oauth/confirm_access")
 	public String confimAccess(Map<String, Object> model, @ModelAttribute("authorizationRequest") AuthorizationRequest authRequest,
 			Principal p) {
@@ -178,7 +178,7 @@ public class OAuthConfirmationController {
 		model.put("scopes", sortedScopes);
 
 		// get the userinfo claims for each scope
-		UserInfo user = userInfoService.getByUsername(p.getName());
+		IUserInfo user = userInfoService.getByUsername(p.getName());
 		Map<String, Map<String, String>> claimsForScopes = new HashMap<>();
 		if (user != null) {
 			JsonObject userJson = user.toJson();

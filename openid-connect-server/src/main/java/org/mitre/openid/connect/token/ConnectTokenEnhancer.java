@@ -27,7 +27,7 @@ import org.mitre.oauth2.model.OAuth2AccessTokenEntity;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
 import org.mitre.oauth2.service.SystemScopeService;
 import org.mitre.openid.connect.config.ConfigurationPropertiesBean;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.service.ApprovedSiteService;
 import org.mitre.openid.connect.service.OIDCTokenService;
 import org.mitre.openid.connect.service.UserInfoService;
@@ -128,7 +128,7 @@ public class ConnectTokenEnhancer implements TokenEnhancer {
 				&& !authentication.isClientOnly()) {
 
 			String username = authentication.getName();
-			UserInfo userInfo = userInfoService.getByUsernameAndClientId(username, clientId);
+			IUserInfo userInfo = userInfoService.getByUsernameAndClientId(username, clientId);
 
 			if (userInfo != null) {
 

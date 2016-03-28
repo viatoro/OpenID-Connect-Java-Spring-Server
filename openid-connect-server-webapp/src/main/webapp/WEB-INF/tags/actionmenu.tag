@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<security:authorize access="hasRole('ROLE_ADMIN')">
+<security:authorize access="hasRole('COM999999')">
 	<li class="nav-header"><spring:message code="sidebar.administrative.title"/></li>
 	<li><a href="manage/#admin/clients" data-toggle="collapse" data-target=".nav-collapse"><spring:message code="sidebar.administrative.manage_clients"/></a></li>
 	<li><a href="manage/#admin/whitelists" data-toggle="collapse" data-target=".nav-collapse"><spring:message code="sidebar.administrative.whitelisted_clients"/></a></li>

@@ -47,7 +47,7 @@ import com.nimbusds.jwt.JWT;
  *
  */
 @Entity
-@Table(name="OID_M_refresh_token")
+@Table(name="OID_M_REFRESH_TOKEN")
 @NamedQueries({
 	@NamedQuery(name = OAuth2RefreshTokenEntity.QUERY_ALL, query = "select r from OAuth2RefreshTokenEntity r"),
 	@NamedQuery(name = OAuth2RefreshTokenEntity.QUERY_EXPIRED_BY_DATE, query = "select r from OAuth2RefreshTokenEntity r where r.expiration <= :" + OAuth2RefreshTokenEntity.PARAM_DATE),

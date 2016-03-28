@@ -22,7 +22,7 @@ import java.util.Set;
 import org.mitre.oauth2.model.ClientDetailsEntity;
 import org.mitre.oauth2.service.ClientDetailsEntityService;
 import org.mitre.openid.connect.model.OIDCAuthenticationToken;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.mitre.openid.connect.view.HttpCodeView;
 import org.mitre.uma.model.Claim;
 import org.mitre.uma.model.PermissionTicket;
@@ -90,7 +90,7 @@ public class ClaimsCollectionEndpoint {
 		Set<Claim> claimsSupplied = Sets.newHashSet(ticket.getClaimsSupplied());
 
 		String issuer = auth.getIssuer();
-		UserInfo userInfo = auth.getUserInfo();
+		IUserInfo userInfo = auth.getUserInfo();
 
 		claimsSupplied.add(mkClaim(issuer, "sub", new JsonPrimitive(auth.getSub())));
 		if (userInfo.getEmail() != null) {

@@ -16,7 +16,7 @@
  *******************************************************************************/
 package org.mitre.openid.connect.service;
 
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 
 /**
  * Interface for UserInfo service
@@ -32,7 +32,7 @@ public interface UserInfoService {
 	 * @param username
 	 * @return
 	 */
-	public UserInfo getByUsername(String username);
+	public IUserInfo getByUsername(String username);
 
 	/**
 	 * Get the UserInfo for the given username (usually maps to the
@@ -42,7 +42,7 @@ public interface UserInfoService {
 	 * @param clientId
 	 * @return
 	 */
-	public UserInfo getByUsernameAndClientId(String username, String clientId);
+	public IUserInfo getByUsernameAndClientId(String username, String clientId);
 
 	/**
 	 * Get the user registered at this server with the given email address.
@@ -50,6 +50,6 @@ public interface UserInfoService {
 	 * @param email
 	 * @return
 	 */
-	public UserInfo getByEmailAddress(String email);
+	public IUserInfo getByEmailAddress(String email);
 
 }

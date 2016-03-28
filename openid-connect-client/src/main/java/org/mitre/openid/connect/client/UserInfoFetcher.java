@@ -28,7 +28,7 @@ import org.mitre.openid.connect.config.ServerConfiguration;
 import org.mitre.openid.connect.config.ServerConfiguration.UserInfoTokenMethod;
 import org.mitre.openid.connect.model.DefaultUserInfo;
 import org.mitre.openid.connect.model.PendingOIDCAuthenticationToken;
-import org.mitre.openid.connect.model.UserInfo;
+import org.mitre.openid.connect.model.IUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -58,7 +58,7 @@ public class UserInfoFetcher {
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoFetcher.class);
 
-	private LoadingCache<PendingOIDCAuthenticationToken, UserInfo> cache;
+	private LoadingCache<PendingOIDCAuthenticationToken, IUserInfo> cache;
 	
 	public UserInfoFetcher() {
 		cache = CacheBuilder.newBuilder()
@@ -67,7 +67,7 @@ public class UserInfoFetcher {
 				.build(new UserInfoLoader());
 	}
 	
-	public UserInfo loadUserInfo(final PendingOIDCAuthenticationToken token) {
+	public IUserInfo loadUserInfo(final PendingOIDCAuthenticationToken token) {
 		try {
 			return cache.get(token);
 		} catch (UncheckedExecutionException | ExecutionException e) {
@@ -78,13 +78,13 @@ public class UserInfoFetcher {
 	}
 	
 	
-	private class UserInfoLoader extends CacheLoader<PendingOIDCAuthenticationToken, UserInfo> {
+	private class UserInfoLoader extends CacheLoader<PendingOIDCAuthenticationToken, IUserInfo> {
 		private HttpClient httpClient = HttpClientBuilder.create()
 				.useSystemProperties()
 				.build();
 		private HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
 	
-		public UserInfo load(final PendingOIDCAuthenticationToken token) {
+		public IUserInfo load(final PendingOIDCAuthenticationToken token) {
 	
 			ServerConfiguration serverConfiguration = token.getServerConfiguration();
 	
@@ -134,7 +134,7 @@ public class UserInfoFetcher {
 	
 					JsonObject userInfoJson = new JsonParser().parse(userInfoString).getAsJsonObject();
 	
-					UserInfo userInfo = fromJson(userInfoJson);
+					IUserInfo userInfo = fromJson(userInfoJson);
 	
 					return userInfo;
 				} else {
@@ -149,7 +149,7 @@ public class UserInfoFetcher {
 		}
 	}
 
-	protected UserInfo fromJson(JsonObject userInfoJson) {
+	protected IUserInfo fromJson(JsonObject userInfoJson) {
 		return DefaultUserInfo.fromJson(userInfoJson);
 	}
 }
