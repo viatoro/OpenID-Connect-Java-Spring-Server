@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS access_token (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
 	token_value VARCHAR(4096),
 	expiration TIMESTAMP NULL,
-	token_type VARCHAR(256),
+	token_type VARCHAR(255),
 	refresh_token_id BIGINT,
 	client_id BIGINT,
 	auth_holder_id BIGINT,
@@ -21,18 +21,18 @@ CREATE TABLE IF NOT EXISTS access_token_permissions (
 
 CREATE TABLE IF NOT EXISTS address (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	formatted VARCHAR(256),
-	street_address VARCHAR(256),
-	locality VARCHAR(256),
-	region VARCHAR(256),
-	postal_code VARCHAR(256),
-	country VARCHAR(256)
+	formatted VARCHAR(255),
+	street_address VARCHAR(255),
+	locality VARCHAR(255),
+	region VARCHAR(255),
+	postal_code VARCHAR(255),
+	country VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS approved_site (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	user_id VARCHAR(256),
-	client_id VARCHAR(256),
+	user_id VARCHAR(255),
+	client_id VARCHAR(255),
 	creation_date TIMESTAMP NULL,
 	access_date TIMESTAMP NULL,
 	timeout_date TIMESTAMP NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS approved_site (
 
 CREATE TABLE IF NOT EXISTS approved_site_scope (
 	owner_id BIGINT,
-	scope VARCHAR(256)
+	scope VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS authentication_holder (
@@ -49,12 +49,12 @@ CREATE TABLE IF NOT EXISTS authentication_holder (
 	user_auth_id BIGINT,
 	approved BOOLEAN,
 	redirect_uri VARCHAR(2048),
-	client_id VARCHAR(256)
+	client_id VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS authentication_holder_authority (
 	owner_id BIGINT,
-	authority VARCHAR(256)
+	authority VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS authentication_holder_resource_id (
@@ -93,17 +93,17 @@ CREATE TABLE IF NOT EXISTS saved_user_auth (
 
 CREATE TABLE IF NOT EXISTS saved_user_auth_authority (
 	owner_id BIGINT,
-	authority VARCHAR(256)
+	authority VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS client_authority (
 	owner_id BIGINT,
-	authority VARCHAR(256)
+	authority VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS authorization_code (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	code VARCHAR(256),
+	code VARCHAR(255),
 	auth_holder_id BIGINT,
 	expiration TIMESTAMP NULL
 );
@@ -132,15 +132,15 @@ CREATE TABLE IF NOT EXISTS client_details (
 	allow_introspection BOOLEAN DEFAULT false NOT NULL,
 	id_token_validity_seconds BIGINT DEFAULT 600 NOT NULL,
 	
-	client_id VARCHAR(256),
+	client_id VARCHAR(255),
 	client_secret VARCHAR(2048),
 	access_token_validity_seconds BIGINT,
 	refresh_token_validity_seconds BIGINT,
 	
-	application_type VARCHAR(256),
-	client_name VARCHAR(256),
-	token_endpoint_auth_method VARCHAR(256),
-	subject_type VARCHAR(256),
+	application_type VARCHAR(255),
+	client_name VARCHAR(255),
+	token_endpoint_auth_method VARCHAR(255),
+	subject_type VARCHAR(255),
 	
 	logo_uri VARCHAR(2048),
 	policy_uri VARCHAR(2048),
@@ -148,20 +148,20 @@ CREATE TABLE IF NOT EXISTS client_details (
 	tos_uri VARCHAR(2048),
 
 	jwks_uri VARCHAR(2048),
-	jwks VARCHAR(8192),
+	jwks text,
 	sector_identifier_uri VARCHAR(2048),
 	
-	request_object_signing_alg VARCHAR(256),
+	request_object_signing_alg VARCHAR(255),
 	
-	user_info_signed_response_alg VARCHAR(256),
-	user_info_encrypted_response_alg VARCHAR(256),
-	user_info_encrypted_response_enc VARCHAR(256),
+	user_info_signed_response_alg VARCHAR(255),
+	user_info_encrypted_response_alg VARCHAR(255),
+	user_info_encrypted_response_enc VARCHAR(255),
 	
-	id_token_signed_response_alg VARCHAR(256),
-	id_token_encrypted_response_alg VARCHAR(256),
-	id_token_encrypted_response_enc VARCHAR(256),
+	id_token_signed_response_alg VARCHAR(255),
+	id_token_encrypted_response_alg VARCHAR(255),
+	id_token_encrypted_response_enc VARCHAR(255),
 	
-	token_endpoint_auth_signing_alg VARCHAR(256),
+	token_endpoint_auth_signing_alg VARCHAR(255),
 	
 	default_max_age BIGINT,
 	require_auth_time BOOLEAN,
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS client_default_acr_value (
 
 CREATE TABLE IF NOT EXISTS client_contact (
 	owner_id BIGINT,
-	contact VARCHAR(256)
+	contact VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS client_redirect_uri (
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS refresh_token (
 
 CREATE TABLE IF NOT EXISTS client_resource (
 	owner_id BIGINT, 
-	resource_id VARCHAR(256) 
+	resource_id VARCHAR(255) 
 );
 
 CREATE TABLE IF NOT EXISTS client_scope (
@@ -227,56 +227,56 @@ CREATE TABLE IF NOT EXISTS token_scope (
 
 CREATE TABLE IF NOT EXISTS system_scope (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	scope VARCHAR(256) NOT NULL,
+	scope VARCHAR(255) NOT NULL,
 	description VARCHAR(4096),
-	icon VARCHAR(256),
+	icon VARCHAR(255),
 	restricted BOOLEAN DEFAULT false NOT NULL,
 	default_scope BOOLEAN DEFAULT false NOT NULL,
 	structured BOOLEAN DEFAULT false NOT NULL,
-	structured_param_description VARCHAR(256),
+	structured_param_description VARCHAR(255),
 	UNIQUE (scope)
 );
 
 CREATE TABLE IF NOT EXISTS user_info (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	sub VARCHAR(256),
-	preferred_username VARCHAR(256),
-	name VARCHAR(256),
-	given_name VARCHAR(256),
-	family_name VARCHAR(256),
-	middle_name VARCHAR(256),
-	nickname VARCHAR(256),
-	profile VARCHAR(256),
-	picture VARCHAR(256),
-	website VARCHAR(256),
-	email VARCHAR(256),
+	sub VARCHAR(255),
+	preferred_username VARCHAR(255),
+	name VARCHAR(255),
+	given_name VARCHAR(255),
+	family_name VARCHAR(255),
+	middle_name VARCHAR(255),
+	nickname VARCHAR(255),
+	profile VARCHAR(255),
+	picture VARCHAR(255),
+	website VARCHAR(255),
+	email VARCHAR(255),
 	email_verified BOOLEAN,
-	gender VARCHAR(256),
-	zone_info VARCHAR(256),
-	locale VARCHAR(256),
-	phone_number VARCHAR(256),
+	gender VARCHAR(255),
+	zone_info VARCHAR(255),
+	locale VARCHAR(255),
+	phone_number VARCHAR(255),
 	phone_number_verified BOOLEAN,
-	address_id VARCHAR(256),
-	updated_time VARCHAR(256),
-	birthdate VARCHAR(256),
+	address_id VARCHAR(255),
+	updated_time VARCHAR(255),
+	birthdate VARCHAR(255),
 	src VARCHAR(4096)
 );
 
 CREATE TABLE IF NOT EXISTS whitelisted_site (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	creator_user_id VARCHAR(256),
-	client_id VARCHAR(256)
+	creator_user_id VARCHAR(255),
+	client_id VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS whitelisted_site_scope (
 	owner_id BIGINT,
-	scope VARCHAR(256)
+	scope VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS pairwise_identifier (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	identifier VARCHAR(256),
-	sub VARCHAR(256),
+	identifier VARCHAR(255),
+	sub VARCHAR(255),
 	sector_identifier VARCHAR(2048)
 );
 
@@ -285,19 +285,19 @@ CREATE TABLE IF NOT EXISTS resource_set (
 	name VARCHAR(1024) NOT NULL,
 	uri VARCHAR(1024),
 	icon_uri VARCHAR(1024),
-	rs_type VARCHAR(256),
-	owner VARCHAR(256) NOT NULL,
-	client_id VARCHAR(256)
+	rs_type VARCHAR(255),
+	owner VARCHAR(255) NOT NULL,
+	client_id VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS resource_set_scope (
 	owner_id BIGINT NOT NULL,
-	scope VARCHAR(256) NOT NULL
+	scope VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS permission_ticket (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	ticket VARCHAR(256) NOT NULL,
+	ticket VARCHAR(255) NOT NULL,
 	permission_id BIGINT NOT NULL,
 	expiration TIMESTAMP NULL
 );
@@ -309,12 +309,12 @@ CREATE TABLE IF NOT EXISTS permission (
 
 CREATE TABLE IF NOT EXISTS permission_scope (
 	owner_id BIGINT NOT NULL,
-	scope VARCHAR(256) NOT NULL
+	scope VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS claim (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(256),
+	name VARCHAR(255),
 	friendly_name VARCHAR(1024),
 	claim_type VARCHAR(1024),
 	claim_value VARCHAR(1024)
@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS policy (
 
 CREATE TABLE IF NOT EXISTS policy_scope (
 	owner_id BIGINT NOT NULL,
-	scope VARCHAR(256) NOT NULL
+	scope VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS claim_token_format (
@@ -354,11 +354,11 @@ CREATE TABLE IF NOT EXISTS claim_issuer (
 CREATE TABLE IF NOT EXISTS saved_registered_client (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
 	issuer VARCHAR(1024),
-	registered_client VARCHAR(8192)
+	registered_client text
 );
 
 
-CREATE INDEX at_tv_idx ON access_token(token_value(767));
+CREATE INDEX at_tv_idx ON access_token(token_value(255));
 CREATE INDEX ts_oi_idx ON token_scope(owner_id);
 CREATE INDEX at_exp_idx ON access_token(expiration);
 CREATE INDEX rf_ahi_idx ON refresh_token(auth_holder_id);

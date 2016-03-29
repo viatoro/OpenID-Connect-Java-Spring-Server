@@ -1,8 +1,6 @@
---
--- Turn off autocommit and start a transaction so that we can use the temp tables
---
 
-SET AUTOCOMMIT FALSE;
+
+SET AUTOCOMMIT =0;
 
 START TRANSACTION;
 
@@ -29,31 +27,22 @@ INSERT INTO user_info_TEMP (sub, preferred_username, name, email, email_verified
 --
 -- Merge the temporary users safely into the database. This is a two-step process to keep users from being created on every startup with a persistent store.
 --
+   
+INSERT INTO users (username, password, enabled)  SELECT username, password, enabled FROM users_TEMP
+ON DUPLICATE KEY UPDATE users.username=VALUES(username);
 
-MERGE INTO users 
-  USING (SELECT username, password, enabled FROM users_TEMP) AS vals(username, password, enabled)
-  ON vals.username = users.username
-  WHEN NOT MATCHED THEN 
-    INSERT (username, password, enabled) VALUES(vals.username, vals.password, vals.enabled);
 
-MERGE INTO authorities 
-  USING (SELECT username, authority FROM authorities_TEMP) AS vals(username, authority)
-  ON vals.username = authorities.username AND vals.authority = authorities.authority
-  WHEN NOT MATCHED THEN 
-    INSERT (username,authority) values (vals.username, vals.authority);
+INSERT INTO authorities (username,authority)  SELECT username, authority FROM authorities_TEMP
+ON DUPLICATE KEY UPDATE authorities.username=VALUES(username),authorities.authority=VALUES(authority);
 
-MERGE INTO user_info 
-  USING (SELECT sub, preferred_username, name, email, email_verified FROM user_info_TEMP) AS vals(sub, preferred_username, name, email, email_verified)
-  ON vals.preferred_username = user_info.preferred_username
-  WHEN NOT MATCHED THEN 
-    INSERT (sub, preferred_username, name, email, email_verified) VALUES (vals.sub, vals.preferred_username, vals.name, vals.email, vals.email_verified);
 
-    
+INSERT INTO user_info (sub, preferred_username, name, email, email_verified)  SELECT sub, preferred_username, name, email, email_verified FROM user_info_TEMP
+ON DUPLICATE KEY UPDATE user_info.preferred_username=VALUES(preferred_username);
 -- 
 -- Close the transaction and turn autocommit back on
 -- 
     
 COMMIT;
 
-SET AUTOCOMMIT TRUE;
+SET AUTOCOMMIT =1;
 
