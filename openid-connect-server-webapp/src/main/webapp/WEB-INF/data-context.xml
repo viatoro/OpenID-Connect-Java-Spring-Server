@@ -45,7 +45,7 @@
 
 
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:jboss/jdbc/OID" />
+		<property name="jndiName" value="java:jboss/jdbc/OID2" />
 		<property name="cache" value="true" />
 		<property name="proxyInterface" value="javax.sql.DataSource" />
 	</bean>

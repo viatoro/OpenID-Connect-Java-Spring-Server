@@ -110,11 +110,11 @@ public class SavedUserAuthentication implements Authentication {
 	@Override
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(
-			name="SAVED_USER_AUTH_AUTHORITY",
-			joinColumns=@JoinColumn(name="owner_id")
+			name="OID_M_SAVED_USER_AUTH_AUTHORITY",
+			joinColumns=@JoinColumn(name="OWNER_ID")
 			)
 	@Convert(converter = SimpleGrantedAuthorityStringConverter.class)
-	@Column(name="authority")
+	@Column(name="AUTHORITY")
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
