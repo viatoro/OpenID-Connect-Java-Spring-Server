@@ -9,7 +9,7 @@
 <head>
 <tiles:insertAttribute name="header" />
 </head>
-<body>
+<body id="page-top" class="index">
 
 <div id="wrap">
 <tiles:insertAttribute name="topbar" />

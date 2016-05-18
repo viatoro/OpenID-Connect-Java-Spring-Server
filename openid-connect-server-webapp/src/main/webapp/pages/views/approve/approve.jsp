@@ -8,9 +8,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:message code="approve.title" var="title"/>
-<o:header title="${title}"/>
-<o:topbar pageName="Approve" />
 <div class="container main">
 	<% if (session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY) != null && !(session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY) instanceof UnapprovedClientAuthenticationException)) { %>
 	<div class="alert-message error">
@@ -273,51 +270,3 @@
 
 	</div>
 </div>
-<script type="text/javascript">
-<!--
-
-$(document).ready(function() {
-		$('.claim-tooltip').popover();
-		$('.claim-tooltip').on('click', function(e) {
-			e.preventDefault();
-			$(this).popover('show');
-		});
-
-		$(document).on('click', '#toggleMoreInformation', function(event) {
-			event.preventDefault();
-			if ($('#moreInformation').is(':visible')) {
-				// hide it
-				$('.moreInformationContainer', this.el).removeClass('alert').removeClass('alert-info').addClass('muted');
-				$('#moreInformation').hide('fast');
-				$('#toggleMoreInformation i').attr('class', 'icon-chevron-right');
-			} else {
-				// show it
-				$('.moreInformationContainer', this.el).addClass('alert').addClass('alert-info').removeClass('muted');
-				$('#moreInformation').show('fast');
-				$('#toggleMoreInformation i').attr('class', 'icon-chevron-down');
-			}
-		});
-		
-    	var creationDate = "<c:out value="${ client.createdAt }" />";
-		var displayCreationDate = $.t('approve.dynamically-registered-unkown');
-		var hoverCreationDate = "";
-		if (creationDate != null && moment(creationDate).isValid()) {
-			creationDate = moment(creationDate);
-			if (moment().diff(creationDate, 'months') < 6) {
-				displayCreationDate = creationDate.fromNow();
-			} else {
-				displayCreationDate = "on " + creationDate.format("LL");
-			}
-			hoverCreationDate = creationDate.format("LLL");
-		}
-		
-		$('#registrationTime').html(displayCreationDate);
-		$('#registrationTime').attr('title', hoverCreationDate);
-
-		
-		
-});
-
-//-->
-</script>
-<o:footer/>

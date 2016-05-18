@@ -6,44 +6,37 @@
 <tiles-definitions>
 
 	<definition name="home" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/home/components/nav.jsp" />
+		<put-attribute name="header" value="/pages/views/home/header.jsp" />
 		<put-attribute name="body" value="/pages/views/home/home.jsp" />
 	</definition>
 	
 	
 	<definition name="about" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/about/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/about/about.jsp" />
 	</definition>
 	
 	<definition name="approve" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/approve/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/approve/approve.jsp" />
 	</definition>
 	<definition name="contact" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/contact/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/contact/contact.jsp" />
 	</definition>
 	
 	<definition name="error" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/error/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/error/error.jsp" />
 	</definition>
 	
 
 	
 	<definition name="login" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/login/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/login/login.jsp" />
 	</definition>
 	
 	<definition name="manage" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/manage/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/manage/manage.jsp" />
 	</definition>
 	
 	<definition name="stats" extends="baseLayout">
-		<put-attribute name="nav" value="/pages/views/stats/components/nav.jsp" />
 		<put-attribute name="body" value="/pages/views/stats/stats.jsp" />
 	</definition>
 	
